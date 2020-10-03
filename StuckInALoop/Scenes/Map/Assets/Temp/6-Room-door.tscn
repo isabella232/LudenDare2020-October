@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Rick/Assets/Temp/6-Room-door.png" type="Texture" id=1]
+[ext_resource path="res://Rick/Assets/Temp/New/5-Room-door.png" type="Texture" id=1]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="6-Room-door" type="Sprite" parent="."]
+[node name="5-Room-door" type="Sprite" parent="."]
 texture = ExtResource( 1 )
