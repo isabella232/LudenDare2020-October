@@ -9,9 +9,10 @@ func _ready():
 	Game.playing = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if (play.pressed):
 		Game.playing = true
+# warning-ignore:return_value_discarded
 		get_tree().change_scene(\"res://Pete/Testing/TestScene.tscn\")
 "
 
