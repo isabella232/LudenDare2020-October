@@ -27,8 +27,8 @@ func process_input(input_text):
 			get_tree().quit()
 
 		\"main\":
-			get_tree().change_scene(\"res://Scenes/MainMenu/Main Menu.tscn\")
-	
+# warning-ignore:return_value_discarded
+			Game.GoToMainMenu(self)
 		_:
 			print(input_text)
 "
