@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/4-Room-edge.png-f2276bb0f7ed8baf99a8d50d8ab5435a.stex"
+path="res://.import/LogWall_Y.png-298416421319f180411bd98cc684a410.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Rick/Assets/Temp/4-Room-edge.png"
-dest_files=[ "res://.import/4-Room-edge.png-f2276bb0f7ed8baf99a8d50d8ab5435a.stex" ]
+source_file="res://Rick/Assets/Obstacles/Walls/Graphics/LogWall_Y.png"
+dest_files=[ "res://.import/LogWall_Y.png-298416421319f180411bd98cc684a410.stex" ]
 
 [params]
 

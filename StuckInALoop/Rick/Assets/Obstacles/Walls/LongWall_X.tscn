@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Rick/Assets/Obstacles/Walls/Graphics/LogWall_X.png" type="Texture" id=1]
+
+[node name="LongWall_X" type="Node2D"]
+
+[node name="LogWall_X" type="Sprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )

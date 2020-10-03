@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Map/Assets/Temp/2-cor-corner.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Map/Assets/Temp/1-cor-straight.tscn" type="PackedScene" id=2]
+
+[node name="8-FinalHallway" type="Node2D"]
+
+[node name="8-FinalHallwayNode2D70" parent="." instance=ExtResource( 1 )]
+position = Vector2( -896, 0 )
+rotation = -1.5708
+
+[node name="8-FinalHallwayNode2D67" parent="." instance=ExtResource( 2 )]
+position = Vector2( -128, 0 )
+rotation = 1.5708
+
+[node name="8-FinalHallwayNode2D68" parent="." instance=ExtResource( 2 )]
+position = Vector2( -384, 0 )
+rotation = 1.5708
+
+[node name="8-FinalHallwayNode2D69" parent="." instance=ExtResource( 2 )]
+position = Vector2( -640, 0 )
+rotation = 1.5708
+
+[node name="8-FinalHallwayNode2D71" parent="." instance=ExtResource( 2 )]
+position = Vector2( -896, -256 )
+
+[node name="8-FinalHallwayNode2D88" parent="." instance=ExtResource( 2 )]
+position = Vector2( -896, -512 )

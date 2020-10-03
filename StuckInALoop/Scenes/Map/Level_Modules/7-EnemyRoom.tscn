@@ -1,0 +1,106 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/Map/Assets/Temp/5-Room-Floor.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Map/Assets/Temp/4-Room-edge.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Map/Assets/Temp/3-Room-corner.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Map/Assets/Temp/7-Room-door-edge.tscn" type="PackedScene" id=4]
+
+[node name="7-EnemyRoom" type="Node2D"]
+
+[node name="7-EnemyRoomNode2D33" parent="." instance=ExtResource( 3 )]
+position = Vector2( -128, 768 )
+rotation = 3.14159
+
+[node name="7-EnemyRoomNode2D34" parent="." instance=ExtResource( 1 )]
+position = Vector2( -384, 512 )
+
+[node name="7-EnemyRoomNode2D35" parent="." instance=ExtResource( 1 )]
+position = Vector2( -640, 512 )
+
+[node name="7-EnemyRoomNode2D36" parent="." instance=ExtResource( 1 )]
+position = Vector2( -896, 512 )
+
+[node name="7-EnemyRoomNode2D37" parent="." instance=ExtResource( 1 )]
+position = Vector2( -1152, 512 )
+
+[node name="7-EnemyRoomNode2D38" parent="." instance=ExtResource( 1 )]
+position = Vector2( -1408, 512 )
+
+[node name="7-EnemyRoomNode2D61" parent="." instance=ExtResource( 1 )]
+position = Vector2( -384, 256 )
+
+[node name="7-EnemyRoomNode2D62" parent="." instance=ExtResource( 1 )]
+position = Vector2( -640, 256 )
+
+[node name="7-EnemyRoomNode2D63" parent="." instance=ExtResource( 1 )]
+position = Vector2( -1408, 256 )
+
+[node name="7-EnemyRoomNode2D64" parent="." instance=ExtResource( 1 )]
+position = Vector2( -896, 256 )
+
+[node name="7-EnemyRoomNode2D65" parent="." instance=ExtResource( 1 )]
+position = Vector2( -1152, 256 )
+
+[node name="7-EnemyRoomNode2D39" parent="." instance=ExtResource( 2 )]
+position = Vector2( -384, 0 )
+
+[node name="7-EnemyRoomNode2D60" parent="." instance=ExtResource( 2 )]
+position = Vector2( -128, 512 )
+rotation = 1.5708
+
+[node name="7-EnemyRoomNode2D86" parent="." instance=ExtResource( 2 )]
+position = Vector2( -128, 256 )
+rotation = 1.5708
+
+[node name="7-EnemyRoomNode2D66" parent="." instance=ExtResource( 2 )]
+position = Vector2( -1664, 256 )
+rotation = -1.5708
+
+[node name="7-EnemyRoomNode2D76" parent="." instance=ExtResource( 2 )]
+position = Vector2( -1664, 512 )
+rotation = -1.5708
+
+[node name="7-EnemyRoomNode2D40" parent="." instance=ExtResource( 2 )]
+position = Vector2( -640, 0 )
+
+[node name="7-EnemyRoomNode2D41" parent="." instance=ExtResource( 2 )]
+position = Vector2( -896, 0 )
+
+[node name="7-EnemyRoomNode2D42" parent="." instance=ExtResource( 2 )]
+position = Vector2( -1152, 0 )
+
+[node name="7-EnemyRoomNode2D43" parent="." instance=ExtResource( 2 )]
+position = Vector2( -1408, 0 )
+
+[node name="7-EnemyRoomNode2D44" parent="." instance=ExtResource( 2 )]
+position = Vector2( -384, 768 )
+rotation = 3.14159
+
+[node name="7-EnemyRoomNode2D45" parent="." instance=ExtResource( 2 )]
+position = Vector2( -640, 768 )
+rotation = 3.14159
+
+[node name="7-EnemyRoomNode2D46" parent="." instance=ExtResource( 2 )]
+position = Vector2( -896, 768 )
+rotation = 3.14159
+
+[node name="7-EnemyRoomNode2D47" parent="." instance=ExtResource( 2 )]
+position = Vector2( -1152, 768 )
+rotation = 3.14159
+
+[node name="7-EnemyRoomNode2D4" parent="." instance=ExtResource( 3 )]
+position = Vector2( -1664, -5.55732e-05 )
+rotation = 1.74846e-07
+
+[node name="7-EnemyRoomNode2D48" parent="." instance=ExtResource( 2 )]
+position = Vector2( -1408, 768 )
+rotation = 3.14159
+
+[node name="7-EnemyRoomNode2D87" parent="." instance=ExtResource( 4 )]
+position = Vector2( -1664, 768 )
+rotation = 3.14159
+scale = Vector2( -1, 1 )
+
+[node name="7-EnemyRoomNode2D95" parent="." instance=ExtResource( 4 )]
+position = Vector2( -128, 0 )
+scale = Vector2( -1, 1 )
