@@ -3,34 +3,47 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends CanvasLayer
 
-onready var textEdit = $TextEdit
+onready var text_edit = $TextEdit
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	remove_child(textEdit)	
+	remove_child(text_edit)	
 
 func _process(_delta):
 	if (Input.is_action_just_pressed(\"console_toggle\")):
 		if (get_child_count() == 0):
-			add_child(textEdit)
-			textEdit.grab_focus()
+			add_child(text_edit)
+			text_edit.grab_focus()
 		else: 
-			textEdit.text = \"\"
-			remove_child(textEdit)
+			text_edit.text = \"\"
+			remove_child(text_edit)
 	if (Input.is_action_just_pressed(\"console_accept\") && get_child_count() > 0):
-		process_input(textEdit.text.replace(\"\\n\", \"\"))
-		textEdit.text = \"\"
+		arguments = text_edit.text.replace(\"\\n\", \"\").split(\" \", true)
+		process_input()
+		text_edit.text = \"\"
 
-func process_input(input_text):
-	match(input_text):
+var arguments;
+
+func getArg(index):
+	if (arguments.size() <= index):
+		return \"\"
+	return arguments[index]	
+
+func process_input():
+	match(getArg(0)):
 		\"exit\":
 			get_tree().quit()
 
 		\"main\":
 # warning-ignore:return_value_discarded
 			Game.GoToMainMenu(self)
+		\"playerspeed\":
+			var parse = getArg(1)
+			if (parse.is_valid_float()):
+				Game.player.run_speed = float(parse)
+
 		_:
-			print(input_text)
+			print(text_edit.text)
 "
 
 [node name="Console" type="CanvasLayer"]

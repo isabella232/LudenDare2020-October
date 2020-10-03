@@ -17,6 +17,7 @@ onready var target = $PlayerSprite/Target
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Game.player = self
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 	
 func look_at_target():
@@ -36,7 +37,7 @@ func _integrate_forces(pstate):
 func change(new_state):
 	state = new_state
 	state_time = 0
-	print(\"player state : \", new_state)
+	#print(\"player state : \", new_state)
 
 func player_move_input():
 	var x = Input.get_action_strength(\"player_move_right\") - Input.get_action_strength(\"player_move_left\")
@@ -55,7 +56,7 @@ func get_forward():
 func try_shoot():
 	if (Input.is_action_just_pressed(\"player_shoot\")):
 		var bullet = load(\"res://Pete/Bullet/Bullet.tscn\").instance()
-		bullet.transform = Transform2D(angle, target.global_position)
+		bullet.global_position = target.global_position
 		bullet.velocity = get_forward()
 		get_tree().current_scene.add_child(bullet)
 
@@ -93,10 +94,12 @@ func process_statemachine(delta):
 radius = 33.9532
 
 [node name="Player" type="RigidBody2D"]
-rotation = -0.00601703
+rotation = -0.00908171
+collision_layer = 2
 gravity_scale = 0.0
 can_sleep = false
 script = SubResource( 1 )
+run_speed = 200
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )

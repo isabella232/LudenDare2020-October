@@ -7,9 +7,18 @@ script/source = "extends Area2D
 
 export var lifespan = 2
 export var speed = 2000
-var velocity
+var velocity setget set_vel, get_vel
 
 var time_alive = 0
+var angle = 0
+
+func set_vel(value):
+	angle = Vector2.ZERO.angle_to_point(value)
+	velocity = value
+	rotation = angle
+	
+func get_vel():
+	return velocity
 
 func _physics_process(delta):
 	position += speed*delta*velocity
@@ -22,9 +31,11 @@ func _physics_process(delta):
 [sub_resource type="CircleShape2D" id=2]
 
 [node name="Bullet" type="Area2D"]
+rotation = -0.00528428
 script = SubResource( 1 )
 
 [node name="icon" type="Sprite" parent="."]
+rotation = -1.5708
 scale = Vector2( 0.25, 0.5 )
 texture = ExtResource( 1 )
 
