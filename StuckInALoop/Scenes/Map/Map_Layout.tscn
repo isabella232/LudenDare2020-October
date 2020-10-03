@@ -1,3 +1,456 @@
-[gd_scene format=2]
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scenes/Map/Assets/Temp/6-Room-door.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Map/Assets/Temp/2-cor-corner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Map/Assets/Temp/4-Room-edge.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Map/Assets/Temp/1-cor-straight.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Map/Assets/Temp/5-Room-Floor.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Map/Assets/Temp/3-Room-corner.tscn" type="PackedScene" id=6]
 
 [node name="Map_Layout" type="Node2D"]
+
+[node name="Node2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, -100 )
+
+[node name="Node2D2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, -300 )
+
+[node name="Node2D120" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1200, -900 )
+rotation = 1.5708
+
+[node name="Node2D121" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1000, -900 )
+
+[node name="Node2D122" parent="." instance=ExtResource( 3 )]
+position = Vector2( 800, -900 )
+
+[node name="Node2D123" parent="." instance=ExtResource( 3 )]
+position = Vector2( 600, -900 )
+
+[node name="Node2D124" parent="." instance=ExtResource( 6 )]
+position = Vector2( 400, -900 )
+
+[node name="Node2D125" parent="." instance=ExtResource( 1 )]
+position = Vector2( 400, -700 )
+
+[node name="Node2D126" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, -700 )
+
+[node name="Node2D3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, -500 )
+
+[node name="Node2D5" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1200, -500 )
+rotation = 3.14159
+
+[node name="Node2D6" parent="." instance=ExtResource( 3 )]
+position = Vector2( 800, -500 )
+rotation = 3.14159
+
+[node name="Node2D72" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1000, -500 )
+rotation = 3.14159
+
+[node name="Node2D119" parent="." instance=ExtResource( 6 )]
+position = Vector2( 400, -500 )
+rotation = -1.5708
+
+[node name="Node2D7" parent="." instance=ExtResource( 3 )]
+position = Vector2( 600, -500 )
+rotation = 3.14159
+
+[node name="Node2D8" parent="." instance=ExtResource( 4 )]
+position = Vector2( 200, -700 )
+rotation = 1.5708
+
+[node name="Node2D117" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1000, -700 )
+
+[node name="Node2D118" parent="." instance=ExtResource( 5 )]
+position = Vector2( 800, -700 )
+
+[node name="Node2D9" parent="." instance=ExtResource( 5 )]
+position = Vector2( 600, -700 )
+
+[node name="Node2D10" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, 96 )
+
+[node name="Node2D23" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, 296 )
+
+[node name="Node2D115" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1600, -700 )
+rotation = -1.5708
+
+[node name="Node2D116" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1800, -700 )
+rotation = -1.5708
+
+[node name="Node2D11" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1400, -700 )
+rotation = -1.5708
+
+[node name="Node2D51" parent="." instance=ExtResource( 1 )]
+position = Vector2( -1.31938e-05, 496 )
+rotation = 1.5708
+
+[node name="Node2D59" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1.74846e-06, 1296 )
+rotation = -1.5708
+
+[node name="Node2D113" parent="." instance=ExtResource( 6 )]
+position = Vector2( 2000, 496 )
+rotation = 1.5708
+
+[node name="Node2D114" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1600, 496 )
+
+[node name="Node2D112" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1800, 496 )
+
+[node name="Node2D101" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1400, 496 )
+
+[node name="Node2D13" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1200, 496 )
+
+[node name="Node2D15" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1000, 296 )
+
+[node name="Node2D75" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1000, 96 )
+
+[node name="Node2D73" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2000, -500 )
+
+[node name="Node2D74" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2000, -300 )
+
+[node name="Node2D24" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1000, 696 )
+rotation = -1.5708
+
+[node name="Node2D99" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2000, 696 )
+rotation = 1.5708
+
+[node name="Node2D100" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1000, 496 )
+rotation = -1.5708
+
+[node name="Node2D22" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1000, 896 )
+rotation = -1.5708
+
+[node name="Node2D50" parent="." instance=ExtResource( 6 )]
+position = Vector2( -400, 496 )
+
+[node name="Node2D54" parent="." instance=ExtResource( 6 )]
+position = Vector2( 400, 496 )
+rotation = 1.5708
+
+[node name="Node2D55" parent="." instance=ExtResource( 6 )]
+position = Vector2( 400, 1296 )
+rotation = 3.14159
+
+[node name="Node2D56" parent="." instance=ExtResource( 6 )]
+position = Vector2( -400, 1296 )
+rotation = -1.5708
+
+[node name="Node2D17" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1800, 896 )
+rotation = 3.14159
+
+[node name="Node2D21" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2000, 896 )
+rotation = 3.14159
+
+[node name="Node2D18" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1600, 896 )
+rotation = 3.14159
+
+[node name="Node2D19" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1400, 896 )
+rotation = 3.14159
+
+[node name="Node2D20" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1200, 896 )
+rotation = 3.14159
+
+[node name="Node2D25" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1200, 696 )
+
+[node name="Node2D26" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1400, 696 )
+
+[node name="Node2D27" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1600, 696 )
+
+[node name="Node2D28" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1800, 696 )
+
+[node name="Node2D29" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2200, 896 )
+rotation = 1.5708
+
+[node name="Node2D49" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2400, 896 )
+rotation = 1.5708
+
+[node name="Node2D30" parent="." instance=ExtResource( 2 )]
+position = Vector2( 3200, 1296 )
+rotation = 3.14159
+
+[node name="Node2D84" parent="." instance=ExtResource( 2 )]
+position = Vector2( 3200, 896 )
+rotation = 1.5708
+
+[node name="Node2D70" parent="." instance=ExtResource( 2 )]
+position = Vector2( 3.49691e-06, 1896 )
+rotation = -1.5708
+
+[node name="Node2D31" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2200, 1296 )
+rotation = 1.5708
+
+[node name="Node2D77" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2400, 1296 )
+rotation = 1.5708
+
+[node name="Node2D78" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2600, 1296 )
+rotation = 1.5708
+
+[node name="Node2D79" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2800, 1296 )
+rotation = 1.5708
+
+[node name="Node2D80" parent="." instance=ExtResource( 4 )]
+position = Vector2( 3000, 1296 )
+rotation = 1.5708
+
+[node name="Node2D81" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2600, 896 )
+rotation = 1.5708
+
+[node name="Node2D82" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2800, 896 )
+rotation = 1.5708
+
+[node name="Node2D83" parent="." instance=ExtResource( 4 )]
+position = Vector2( 3000, 896 )
+rotation = 1.5708
+
+[node name="Node2D85" parent="." instance=ExtResource( 4 )]
+position = Vector2( 3200, 1096 )
+
+[node name="Node2D67" parent="." instance=ExtResource( 4 )]
+position = Vector2( 600, 1896 )
+rotation = 1.5708
+
+[node name="Node2D68" parent="." instance=ExtResource( 4 )]
+position = Vector2( 400, 1896 )
+rotation = 1.5708
+
+[node name="Node2D69" parent="." instance=ExtResource( 4 )]
+position = Vector2( 200, 1896 )
+rotation = 1.5708
+
+[node name="Node2D33" parent="." instance=ExtResource( 6 )]
+position = Vector2( 2000, 1896 )
+rotation = 3.14159
+
+[node name="Node2D34" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1800, 1696 )
+
+[node name="Node2D35" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1600, 1696 )
+
+[node name="Node2D36" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1400, 1696 )
+
+[node name="Node2D37" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1200, 1696 )
+
+[node name="Node2D38" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1000, 1696 )
+
+[node name="Node2D61" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1800, 1496 )
+
+[node name="Node2D62" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1600, 1496 )
+
+[node name="Node2D63" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1400, 1496 )
+
+[node name="Node2D64" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1200, 1496 )
+
+[node name="Node2D65" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1000, 1496 )
+
+[node name="Node2D39" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1800, 1296 )
+
+[node name="Node2D60" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2000, 1696 )
+rotation = 1.5708
+
+[node name="Node2D86" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2000, 1496 )
+rotation = 1.5708
+
+[node name="Node2D87" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2000, 1296 )
+
+[node name="Node2D66" parent="." instance=ExtResource( 3 )]
+position = Vector2( 800, 1496 )
+rotation = -1.5708
+
+[node name="Node2D76" parent="." instance=ExtResource( 3 )]
+position = Vector2( 800, 1696 )
+rotation = -1.5708
+
+[node name="Node2D40" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1600, 1296 )
+
+[node name="Node2D41" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1400, 1296 )
+
+[node name="Node2D52" parent="." instance=ExtResource( 3 )]
+position = Vector2( -200, 496 )
+
+[node name="Node2D57" parent="." instance=ExtResource( 3 )]
+position = Vector2( 200, 1296 )
+rotation = 3.14159
+
+[node name="Node2D58" parent="." instance=ExtResource( 3 )]
+position = Vector2( -200, 1296 )
+rotation = 3.14159
+
+[node name="Node2D71" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, 1696 )
+
+[node name="Node2D88" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, 1496 )
+
+[node name="Node2D32" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1800, -100 )
+rotation = 1.5708
+
+[node name="Node2D89" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1600, -100 )
+rotation = 1.5708
+
+[node name="Node2D90" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1400, -100 )
+rotation = 1.5708
+
+[node name="Node2D91" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1200, -100 )
+rotation = 1.5708
+
+[node name="Node2D92" parent="." instance=ExtResource( 2 )]
+position = Vector2( 2000, -700 )
+rotation = 1.5708
+
+[node name="Node2D93" parent="." instance=ExtResource( 2 )]
+position = Vector2( 2000, -100 )
+rotation = -3.14159
+
+[node name="Node2D94" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1000, -100 )
+
+[node name="Node2D95" parent="." instance=ExtResource( 3 )]
+position = Vector2( 800, 1896 )
+rotation = -3.14159
+
+[node name="Node2D12" parent="." instance=ExtResource( 3 )]
+position = Vector2( -400, 1096 )
+rotation = -1.5708
+
+[node name="Node2D14" parent="." instance=ExtResource( 3 )]
+position = Vector2( -400, 896 )
+rotation = -1.5708
+
+[node name="Node2D16" parent="." instance=ExtResource( 3 )]
+position = Vector2( -400, 696 )
+rotation = -1.5708
+
+[node name="Node2D96" parent="." instance=ExtResource( 3 )]
+position = Vector2( 400, 696 )
+rotation = 1.5708
+
+[node name="Node2D97" parent="." instance=ExtResource( 3 )]
+position = Vector2( 400, 896 )
+rotation = 1.5708
+
+[node name="Node2D98" parent="." instance=ExtResource( 3 )]
+position = Vector2( 400, 1096 )
+rotation = 1.5708
+
+[node name="Node2D102" parent="." instance=ExtResource( 5 )]
+position = Vector2( -200, 696 )
+
+[node name="Node2D103" parent="." instance=ExtResource( 5 )]
+position = Vector2( 0, 696 )
+
+[node name="Node2D104" parent="." instance=ExtResource( 5 )]
+position = Vector2( 200, 696 )
+
+[node name="Node2D105" parent="." instance=ExtResource( 5 )]
+position = Vector2( -200, 896 )
+
+[node name="Node2D106" parent="." instance=ExtResource( 5 )]
+position = Vector2( 0, 896 )
+
+[node name="Node2D107" parent="." instance=ExtResource( 5 )]
+position = Vector2( 200, 896 )
+
+[node name="Node2D108" parent="." instance=ExtResource( 5 )]
+position = Vector2( -200, 1096 )
+
+[node name="Node2D109" parent="." instance=ExtResource( 5 )]
+position = Vector2( 0, 1096 )
+
+[node name="Node2D110" parent="." instance=ExtResource( 5 )]
+position = Vector2( 200, 1096 )
+
+[node name="Node2D111" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1200, -700 )
+rotation = -3.14159
+
+[node name="Node2D53" parent="." instance=ExtResource( 3 )]
+position = Vector2( 200, 496 )
+
+[node name="Node2D42" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1200, 1296 )
+
+[node name="Node2D43" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1000, 1296 )
+
+[node name="Node2D44" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1800, 1896 )
+rotation = 3.14159
+
+[node name="Node2D45" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1600, 1896 )
+rotation = 3.14159
+
+[node name="Node2D46" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1400, 1896 )
+rotation = 3.14159
+
+[node name="Node2D47" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1200, 1896 )
+rotation = 3.14159
+
+[node name="Node2D4" parent="." instance=ExtResource( 6 )]
+position = Vector2( 800, 1296 )
+rotation = 1.74846e-07
+
+[node name="Node2D48" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1000, 1896 )
+rotation = 3.14159
