@@ -1,9 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Map/Assets/Temp/5-Room-Floor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Map/Assets/Temp/4-Room-edge.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Map/Assets/Temp/3-Room-corner.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Map/Assets/Temp/7-Room-door-edge.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Pete/Enemy/Enemy_Spawner.tscn" type="PackedScene" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 78.5098, 205.521 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 98.571, 212.817 )
 
 [node name="7-EnemyRoom" type="Node2D"]
 
@@ -104,3 +111,16 @@ scale = Vector2( -1, 1 )
 [node name="7-EnemyRoomNode2D95" parent="." instance=ExtResource( 4 )]
 position = Vector2( -128, 0 )
 scale = Vector2( -1, 1 )
+
+[node name="Enemy_Spawner" parent="." instance=ExtResource( 5 )]
+position = Vector2( -1528.27, 362.59 )
+
+[node name="CollisionShape2D" parent="Enemy_Spawner/Spawn Enemies" index="0"]
+position = Vector2( 1519.28, -362.59 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D" parent="Enemy_Spawner/Reset Spawner" index="0"]
+position = Vector2( -1535.56, 412.642 )
+shape = SubResource( 2 )
+
+[editable path="Enemy_Spawner"]
