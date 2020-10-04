@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scenes/Map/Assets/Temp/Cannon.tscn" type="PackedScene" id=1]
 
-[sub_resource type="GDScript" id=5]
+[sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
 
 var cannon_ball = load(\"res://Pete/CannonBalls/CannonBall.tscn\")
@@ -29,7 +29,7 @@ func _process(delta):
 	pass
 "
 
-[sub_resource type="GDScript" id=1]
+[sub_resource type="GDScript" id=2]
 script/source = "extends Area2D
 
 func _on_EnableCannons_body_entered(_body):
@@ -37,11 +37,15 @@ func _on_EnableCannons_body_entered(_body):
 		child.set_process(true)
 "
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 166.926, 33.5054 )
 
-[sub_resource type="GDScript" id=3]
+[sub_resource type="GDScript" id=4]
 script/source = "extends Area2D
+
+func _ready():
+	for child in get_parent().get_children():
+		child.set_process(false)
 
 # warning-ignore:unused_argument
 func _on_DisableCannons_body_entered(body):
@@ -49,52 +53,52 @@ func _on_DisableCannons_body_entered(body):
 		child.set_process(false)
 "
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 44.4021, 161.219 )
 
 [node name="Cannons" type="Node2D"]
 pause_mode = 1
 
-[node name="Cannon" type="Node2D" parent="." instance=ExtResource( 1 )]
+[node name="Cannon" parent="." instance=ExtResource( 1 )]
 position = Vector2( 332.015, -312.888 )
 rotation = 3.12038
-script = SubResource( 5 )
+script = SubResource( 1 )
 
-[node name="Cannon3" type="Node2D" parent="." instance=ExtResource( 1 )]
+[node name="Cannon3" parent="." instance=ExtResource( 1 )]
 position = Vector2( -314.057, -881.177 )
 rotation = -0.0101283
-script = SubResource( 5 )
+script = SubResource( 1 )
 
-[node name="Cannon4" type="Node2D" parent="." instance=ExtResource( 1 )]
+[node name="Cannon4" parent="." instance=ExtResource( 1 )]
 position = Vector2( -293.42, -1243.1 )
 rotation = -0.0101283
-script = SubResource( 5 )
+script = SubResource( 1 )
 
-[node name="Cannon2" type="Node2D" parent="." instance=ExtResource( 1 )]
+[node name="Cannon2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 355.826, -698.626 )
 rotation = 3.12038
-script = SubResource( 5 )
+script = SubResource( 1 )
 
 [node name="EnableCannons" type="Area2D" parent="."]
 pause_mode = 2
 position = Vector2( 1.33484, 1.33484 )
 collision_layer = 0
 collision_mask = 2
-script = SubResource( 1 )
+script = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnableCannons"]
 position = Vector2( -3.1748, -31.748 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="DisableCannons" type="Area2D" parent="."]
 pause_mode = 2
 position = Vector2( 171.11, -1361.03 )
 collision_layer = 0
 collision_mask = 2
-script = SubResource( 3 )
+script = SubResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DisableCannons"]
 position = Vector2( -3.1748, -31.748 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 [connection signal="body_entered" from="EnableCannons" to="EnableCannons" method="_on_EnableCannons_body_entered"]
 [connection signal="body_entered" from="DisableCannons" to="DisableCannons" method="_on_DisableCannons_body_entered"]
