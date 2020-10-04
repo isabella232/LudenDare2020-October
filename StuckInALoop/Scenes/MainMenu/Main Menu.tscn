@@ -3,9 +3,12 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends CanvasLayer
 
-onready var play = $Button
+onready var play = $Start
+onready var quit = $Quit
 
 func _ready():
+	Game.loops = 0
+	Game.spawn_boss = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	play.grab_focus()
 	Game.playing = false
@@ -16,6 +19,9 @@ func _process(_delta):
 		Game.playing = true
 # warning-ignore:return_value_discarded
 		get_tree().change_scene(\"res://Scenes/Game/Game.tscn\")
+	if (quit.pressed):
+		get_tree().quit()
+# warning-ignore:return_value_discarded
 "
 
 [node name="Main Menu" type="CanvasLayer"]
@@ -37,16 +43,36 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="."]
+[node name="Start" type="Button" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -125.0
-margin_top = -50.0
+margin_top = -25.0
 margin_right = 125.0
-margin_bottom = 50.0
+margin_bottom = 25.0
 text = "Start Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quit" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.6
+anchor_right = 0.5
+anchor_bottom = 0.6
+margin_left = -125.0
+margin_top = -25.0
+margin_right = 125.0
+margin_bottom = 25.0
+focus_neighbour_left = NodePath("../Start")
+focus_neighbour_top = NodePath("../Start")
+focus_neighbour_right = NodePath("../Start")
+focus_neighbour_bottom = NodePath("../Start")
+focus_next = NodePath("../Start")
+focus_previous = NodePath("../Start")
+text = "Exit Game"
 __meta__ = {
 "_edit_use_anchors_": false
 }

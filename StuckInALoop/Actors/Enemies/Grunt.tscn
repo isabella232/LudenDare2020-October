@@ -34,6 +34,7 @@ var health = 3
 var target_rotation = 0
 var choose_wander_direction = true
 var projectile = load(\"res://Pete/Bullet/Bullet.tscn\")
+var damage = 1
 
 func _on_DetectionArea_body_entered(body):
 	target = body
@@ -118,7 +119,7 @@ func process_ai(delta):
 			move_input = Vector2.ZERO
 			if (target != null):
 				change_ai(grunt_ai.chase)
-			if (ai_time > 3):
+			if (ai_time > 1):
 				change_ai(grunt_ai.wander)
 		
 		grunt_ai.chase:
@@ -136,9 +137,10 @@ func process_ai(delta):
 			if (target != null):
 				var bullet = projectile.instance()
 				get_tree().current_scene.add_child(bullet)
-				var velocity = (target.global_position - global_position).normalized()
-				bullet.global_position = global_position + velocity * 50
-				bullet.velocity = velocity
+				var bvelocity = (target.global_position - global_position).normalized()
+				bullet.global_position = global_position + bvelocity * 50
+				bullet.velocity = bvelocity
+				bullet.damage = damage
 				bullet.speed = 500
 			change_ai(grunt_ai.idle)
 		
@@ -146,7 +148,7 @@ func process_ai(delta):
 			if (choose_wander_direction):
 				choose_wander_direction = false
 				move_input = Vector2(randf()*2-1, randf()*2-1).normalized()
-			if (ai_time > 3):
+			if (ai_time > 1):
 				change_ai(grunt_ai.idle)
 				choose_wander_direction = true
 			if (target != null):
@@ -179,6 +181,8 @@ radius = 33.836
 
 [node name="Grunt" type="RigidBody2D"]
 gravity_scale = 0.0
+contacts_reported = 1
+contact_monitor = true
 can_sleep = false
 script = SubResource( 1 )
 

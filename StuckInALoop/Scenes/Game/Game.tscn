@@ -13,7 +13,7 @@
 [node name="Game" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 21.2683, -329.348 )
+position = Vector2( 15.2548, -612.097 )
 z_as_relative = false
 
 [node name="Level_Layout" type="Node2D" parent="."]

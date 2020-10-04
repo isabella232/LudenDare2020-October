@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Map/Assets/Temp/2-cor-corner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Map/Assets/Temp/1-cor-straight.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Pete/Enemy/Cannons.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 58.9387, 169.63 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 201.418, 77.7266 )
 
 [node name="4-Hallway" type="Node2D"]
 
@@ -51,3 +58,31 @@ rotation = -3.14159
 
 [node name="4-HallwayNode2D94" parent="." instance=ExtResource( 1 )]
 position = Vector2( -640, 768 )
+
+[node name="Cannons" parent="." instance=ExtResource( 3 )]
+
+[node name="Cannon" parent="Cannons" index="0"]
+position = Vector2( 897.477, 391.847 )
+rotation = 2.57905
+
+[node name="Cannon3" parent="Cannons" index="1"]
+position = Vector2( 169.059, -237.024 )
+rotation = 0.962989
+
+[node name="Cannon4" parent="Cannons" index="2"]
+position = Vector2( -979.952, 1274.18 )
+rotation = -0.635621
+
+[node name="Cannon2" parent="Cannons" index="3"]
+position = Vector2( 110.031, 564.254 )
+rotation = 2.63443
+
+[node name="CollisionShape2D" parent="Cannons/EnableCannons" index="0"]
+position = Vector2( 8.13892, -6.29219 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D" parent="Cannons/DisableCannons" index="0"]
+position = Vector2( -808.547, 2740.73 )
+shape = SubResource( 2 )
+
+[editable path="Cannons"]

@@ -1,7 +1,37 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Map/Assets/Temp/2-cor-corner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Map/Assets/Temp/1-cor-straight.tscn" type="PackedScene" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Node2D
+
+onready var door = $LastDoor
+
+# warning-ignore:unused_argument
+func _on_OpenDoor_SpawnBoss_body_entered(body):
+	Game.spawn_boss = true
+	call_deferred(\"disable_door\")
+
+# warning-ignore:unused_argument
+func _on_ShutDoor_body_entered(body):
+	call_deferred(\"enable_door\")
+
+func enable_door():
+	if (door.get_parent() == null):
+		add_child(door)
+	
+func disable_door():
+	if (door.get_parent() != null):
+		remove_child(door)
+"
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 138.025, 37.9256 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 137.425, 32.2305 )
 
 [node name="8-FinalHallway" type="Node2D"]
 
@@ -26,3 +56,32 @@ position = Vector2( -896, -256 )
 
 [node name="8-FinalHallwayNode2D88" parent="." instance=ExtResource( 2 )]
 position = Vector2( -896, -512 )
+
+[node name="LastHallwayBehaviour" type="Node2D" parent="."]
+script = SubResource( 4 )
+
+[node name="LastDoor" type="KinematicBody2D" parent="LastHallwayBehaviour"]
+position = Vector2( -900.381, -466.837 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LastHallwayBehaviour/LastDoor"]
+position = Vector2( 5.70288, 0.160767 )
+shape = SubResource( 5 )
+
+[node name="icon" type="Sprite" parent="LastHallwayBehaviour/LastDoor"]
+position = Vector2( 8.68481, -0.965271 )
+scale = Vector2( 4.12, 1.08 )
+texture = ExtResource( 3 )
+
+[node name="ShutDoor" type="Area2D" parent="LastHallwayBehaviour"]
+position = Vector2( -894.207, -607.736 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LastHallwayBehaviour/ShutDoor"]
+shape = SubResource( 3 )
+
+[node name="OpenDoor SpawnBoss" type="Area2D" parent="LastHallwayBehaviour"]
+position = Vector2( -894.207, -320.651 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LastHallwayBehaviour/OpenDoor SpawnBoss"]
+shape = SubResource( 3 )
+[connection signal="body_entered" from="LastHallwayBehaviour/ShutDoor" to="LastHallwayBehaviour" method="_on_ShutDoor_body_entered"]
+[connection signal="body_entered" from="LastHallwayBehaviour/OpenDoor SpawnBoss" to="LastHallwayBehaviour" method="_on_OpenDoor_SpawnBoss_body_entered"]

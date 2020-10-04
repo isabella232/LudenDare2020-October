@@ -12,7 +12,7 @@ onready var target = $Target
 # var a = 2
 # var b = \"text\"
 
-var delay = 2
+var delay = randf()*2
 var time_since_shot = 0
 var enabled = false
 
