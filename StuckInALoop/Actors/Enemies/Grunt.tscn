@@ -33,6 +33,7 @@ var move_input = Vector2.ZERO
 var health = 3
 var target_rotation = 0
 var choose_wander_direction = true
+var projectile = load(\"res://Pete/Bullet/Bullet.tscn\")
 
 func _on_DetectionArea_body_entered(body):
 	target = body
@@ -107,6 +108,9 @@ func process_statemachine(delta):
 		_: 
 			change_state(grunt_states.enter_idle)
 
+var attack_delay = 0
+var attack_cooldown = randf()*2+1
+
 # warning-ignore:unused_argument
 func process_ai(delta):
 	match(current_ai):
@@ -121,7 +125,22 @@ func process_ai(delta):
 			if (target == null):
 				change_ai(grunt_ai.wander)
 			else:
-				move_input = (target.global_position - global_position).normalized()		
+				move_input = (target.global_position - global_position).normalized()
+				attack_delay += delta
+				if (attack_delay > attack_cooldown):
+					change_ai(grunt_ai.attack)
+					attack_delay = 0
+					attack_cooldown = randf()*2 + 1
+		
+		grunt_ai.attack:
+			if (target != null):
+				var bullet = projectile.instance()
+				get_tree().current_scene.add_child(bullet)
+				var velocity = (target.global_position - global_position).normalized()
+				bullet.global_position = global_position + velocity * 50
+				bullet.velocity = velocity
+				bullet.speed = 500
+			change_ai(grunt_ai.idle)
 		
 		grunt_ai.wander:			
 			if (choose_wander_direction):

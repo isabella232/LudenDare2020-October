@@ -14,12 +14,16 @@ var target_angle = 0
 onready var collider = $CollisionShape2D
 onready var camera = $PlayerCamera
 onready var target = $PlayerSprite/Target
+var health = 10
+var recoil_velocity = Vector2.ZERO
 
 enum PlayerStates{
 	enter_idle,
 	idle,
 	run,
-	dash
+	dash,
+	damage,
+	death
 }
 
 # Called when the node enters the scene tree for the first time.
@@ -109,6 +113,29 @@ func process_statemachine(delta):
 			target_velocity = target_velocity.normalized() * (dash_speed + run_speed)
 			if (state_time > .25):
 				change(PlayerStates.enter_idle)
+		
+		PlayerStates.damage:
+			target_velocity = lerp(recoil_velocity, player_move_input() * run_speed, state_time * 2)
+			modulate = lerp(Color.white, Color.red, sin(state_time * 10))
+			if (state_time > .25):
+				change(PlayerStates.enter_idle)
+				modulate = Color.white
+		
+		PlayerStates.death:
+			sleeping = true
+			modulate = Color(.2, .2, .2)
+
+# warning-ignore:unused_signal
+signal on_damage(amount, recoil_direction)
+
+func _on_Player_on_damage(amount, recoil_direction):
+	health -= amount
+	if (health <= 0):
+		change(PlayerStates.death)
+	else:
+		change(PlayerStates.damage)
+		recoil_velocity = recoil_direction
+	pass # Replace with function body.
 "
 
 [sub_resource type="CircleShape2D" id=2]
@@ -131,3 +158,4 @@ position = Vector2( 0, -100 )
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
 current = true
+[connection signal="on_damage" from="." to="." method="_on_Player_on_damage"]
