@@ -91,7 +91,7 @@ func process_statemachine(delta):
 			
 		grunt_states.run:
 			if (move_input.length() > .1):
-				velocity = move_input * run_speed
+				velocity = move_input * run_speed * ((Game.loops+1)*1.1)
 				look_at(velocity)
 			else:
 				change_state(grunt_states.enter_idle)

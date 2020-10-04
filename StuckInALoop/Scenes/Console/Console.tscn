@@ -37,7 +37,7 @@ func get_float(index):
 
 func get_int(index):
 	var arg = get_string(index)
-	if (arg.is_valid_int()):
+	if (arg.is_valid_integer()):
 		return int(arg)
 	return 0
 
@@ -57,6 +57,8 @@ func process_input():
 			Game.player.dash_speed = get_float(1)
 		\"godmode\":
 			Game.player.god_mode = !Game.player.god_mode
+		\"setloop\":
+			Game.loops = get_int(1)
 		_:
 			print(text_edit.text)
 "

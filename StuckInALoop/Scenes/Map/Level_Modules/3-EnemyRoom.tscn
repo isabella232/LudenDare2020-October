@@ -1,9 +1,37 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Map/Assets/Temp/6-Room-door.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Map/Assets/Temp/5-Room-Floor.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Map/Assets/Temp/4-Room-edge.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Map/Assets/Temp/3-Room-corner.tscn" type="PackedScene" id=4]
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Node2D
+
+onready var spawn = $\"Spawn Positions\"
+var enemy = load(\"res://Actors/Enemies/Grunt.tscn\")
+
+var spawnable = true
+var rand = RandomNumberGenerator.new()
+
+func _on_Spawn_Enemies_body_entered(body):
+	if (spawnable):
+		spawnable = false
+		for n in range(Game.loops + 2):
+			var e = enemy.instance()
+			get_tree().current_scene.add_child(e)
+			var index = rand.randi_range(0, spawn.get_child_count()-1)
+			e.global_position = spawn.get_child(index).global_position
+
+func _on_Reset_Spawner_body_entered(body):
+	spawnable = true
+"
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 50.7326, 138.13 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 36.364, 129.671 )
 
 [node name="3-EnemyRoom" type="Node2D"]
 
@@ -73,3 +101,43 @@ position = Vector2( 384, 0 )
 show_behind_parent = true
 position = Vector2( 1152, -3.05176e-05 )
 rotation = -3.14159
+
+[node name="Enemy_Spawner" type="Node2D" parent="."]
+script = SubResource( 3 )
+
+[node name="Spawn Enemies" type="Area2D" parent="Enemy_Spawner"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_Spawner/Spawn Enemies"]
+shape = SubResource( 1 )
+
+[node name="Reset Spawner" type="Area2D" parent="Enemy_Spawner"]
+position = Vector2( 1263.78, -3.79988 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_Spawner/Reset Spawner"]
+position = Vector2( 10.6908, -0.8909 )
+shape = SubResource( 2 )
+
+[node name="Spawn Positions" type="Node2D" parent="Enemy_Spawner"]
+
+[node name="Node2D" type="Node2D" parent="Enemy_Spawner/Spawn Positions"]
+position = Vector2( 246.047, -220.649 )
+
+[node name="Node2D2" type="Node2D" parent="Enemy_Spawner/Spawn Positions"]
+position = Vector2( 246.047, 146.041 )
+
+[node name="Node2D3" type="Node2D" parent="Enemy_Spawner/Spawn Positions"]
+position = Vector2( 555.59, -115.88 )
+
+[node name="Node2D4" type="Node2D" parent="Enemy_Spawner/Spawn Positions"]
+position = Vector2( 857.197, 136.516 )
+
+[node name="Node2D5" type="Node2D" parent="Enemy_Spawner/Spawn Positions"]
+position = Vector2( 1004.82, -168.264 )
+
+[node name="Node2D6" type="Node2D" parent="Enemy_Spawner/Spawn Positions"]
+position = Vector2( 779.414, -239.698 )
+
+[node name="Node2D7" type="Node2D" parent="Enemy_Spawner/Spawn Positions"]
+position = Vector2( 509.556, -292.082 )
+[connection signal="body_entered" from="Enemy_Spawner/Spawn Enemies" to="Enemy_Spawner" method="_on_Spawn_Enemies_body_entered"]
+[connection signal="body_entered" from="Enemy_Spawner/Reset Spawner" to="Enemy_Spawner" method="_on_Reset_Spawner_body_entered"]
