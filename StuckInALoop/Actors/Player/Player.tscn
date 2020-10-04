@@ -16,6 +16,7 @@ onready var camera = $PlayerCamera
 onready var target = $PlayerSprite/Target
 var health = 10
 var recoil_velocity = Vector2.ZERO
+var god_mode = false
 
 enum PlayerStates{
 	enter_idle,
@@ -86,7 +87,6 @@ func try_shoot():
 		get_tree().current_scene.add_child(bullet)
 
 func process_statemachine(delta):
-	try_shoot()
 	state_time += delta
 	match (state):
 		PlayerStates.enter_idle:
@@ -99,6 +99,7 @@ func process_statemachine(delta):
 			if (try_dash()):
 				target_velocity = get_forward()
 			look_at_target()
+			try_shoot()
 			
 		PlayerStates.run:
 			if (player_move_input().length() < .1):
@@ -106,6 +107,7 @@ func process_statemachine(delta):
 			target_velocity = player_move_input() * run_speed
 			try_dash()
 			look_at_target()
+			try_shoot()
 			
 		PlayerStates.dash:
 			if (state == PlayerStates.idle):
@@ -122,13 +124,15 @@ func process_statemachine(delta):
 				modulate = Color.white
 		
 		PlayerStates.death:
-			sleeping = true
+			target_velocity = Vector2.ZERO
 			modulate = Color(.2, .2, .2)
 
 # warning-ignore:unused_signal
 signal on_damage(amount, recoil_direction)
 
 func _on_Player_on_damage(amount, recoil_direction):
+	if (god_mode):
+		return
 	health -= amount
 	if (health <= 0):
 		change(PlayerStates.death)

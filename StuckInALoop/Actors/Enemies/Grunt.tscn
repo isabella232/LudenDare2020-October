@@ -145,7 +145,7 @@ func process_ai(delta):
 		grunt_ai.wander:			
 			if (choose_wander_direction):
 				choose_wander_direction = false
-				move_input = Vector2(randf(), randf()).normalized()
+				move_input = Vector2(randf()*2-1, randf()*2-1).normalized()
 			if (ai_time > 3):
 				change_ai(grunt_ai.idle)
 				choose_wander_direction = true

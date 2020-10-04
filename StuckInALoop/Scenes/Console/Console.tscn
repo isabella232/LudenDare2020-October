@@ -55,7 +55,8 @@ func process_input():
 				Game.player.run_speed = float(parse)
 		\"playerdash\":
 			Game.player.dash_speed = get_float(1)
-			
+		\"godmode\":
+			Game.player.god_mode = !Game.player.god_mode
 		_:
 			print(text_edit.text)
 "
