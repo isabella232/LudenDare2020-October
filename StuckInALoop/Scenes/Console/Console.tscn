@@ -49,15 +49,15 @@ func process_input():
 		\"main\":
 # warning-ignore:return_value_discarded
 			Game.GoToMainMenu(self)
-		\"playerspeed\":
+		\"move\":
 			var parse = get_string(1)
 			if (parse.is_valid_float()):
 				Game.player.run_speed = float(parse)
-		\"playerdash\":
+		\"dash\":
 			Game.player.dash_speed = get_float(1)
 		\"godmode\":
 			Game.player.god_mode = !Game.player.god_mode
-		\"setloop\":
+		\"loop\":
 			Game.loops = get_int(1)
 		_:
 			print(text_edit.text)
