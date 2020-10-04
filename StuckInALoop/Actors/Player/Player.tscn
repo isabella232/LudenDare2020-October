@@ -25,11 +25,25 @@ enum PlayerStates{
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Game.player = self
-	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
-	
+
+func _input(event):
+	if event is InputEventMouseMotion:
+		if (event.get_relative().length() > 1):
+			controller = false
+
+var controller = false
+
 func look_at_target():
-	var mousepos = camera.get_global_mouse_position()-global_position
-	target_angle = Vector2.UP.angle_to(mousepos)
+	var x = Input.get_action_strength(\"player_look_right\") - Input.get_action_strength(\"player_look_left\")
+	var y = -Input.get_action_strength(\"player_look_up\") + Input.get_action_strength(\"player_look_down\")
+	if (Vector2(x,y).length() > .1):
+		controller = true
+		target_angle = Vector2.UP.angle_to(Vector2(x,y))
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	if (!controller):
+		var mousepos = camera.get_global_mouse_position()-global_position
+		target_angle = Vector2.UP.angle_to(mousepos)
+		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 	
 func _process(delta):
 	process_statemachine(delta)
