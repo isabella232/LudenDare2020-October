@@ -24,13 +24,25 @@ func _process(_delta):
 
 var arguments;
 
-func getArg(index):
+func get_string(index):
 	if (arguments.size() <= index):
 		return \"\"
 	return arguments[index]	
 
+func get_float(index):
+	var arg = get_string(index)
+	if (arg.is_valid_float()):
+		return float(arg)
+	return 0
+
+func get_int(index):
+	var arg = get_string(index)
+	if (arg.is_valid_int()):
+		return int(arg)
+	return 0
+
 func process_input():
-	match(getArg(0)):
+	match(get_string(0)):
 		\"exit\":
 			get_tree().quit()
 
@@ -38,10 +50,12 @@ func process_input():
 # warning-ignore:return_value_discarded
 			Game.GoToMainMenu(self)
 		\"playerspeed\":
-			var parse = getArg(1)
+			var parse = get_string(1)
 			if (parse.is_valid_float()):
 				Game.player.run_speed = float(parse)
-
+		\"playerdash\":
+			Game.player.dash_speed = get_float(1)
+			
 		_:
 			print(text_edit.text)
 "

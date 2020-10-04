@@ -6,6 +6,7 @@ script/source = "extends CanvasLayer
 onready var play = $Button
 
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	Game.playing = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

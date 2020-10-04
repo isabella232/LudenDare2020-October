@@ -5,15 +5,22 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends RigidBody2D
 
-export var run_speed = 100
-export var dash_speed = 10
+export var run_speed = 200
+export var dash_speed = 600
 var state = PlayerStates.idle
 var state_time = 0
-var velocity = Vector2.ZERO
-var angle = 0
+var target_velocity = Vector2.ZERO
+var target_angle = 0
 onready var collider = $CollisionShape2D
 onready var camera = $PlayerCamera
 onready var target = $PlayerSprite/Target
+
+enum PlayerStates{
+	enter_idle,
+	idle,
+	run,
+	dash
+}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,8 +28,8 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 	
 func look_at_target():
-	var mousepos = camera.get_global_mouse_position()
-	angle = global_position.angle_to_point(mousepos)
+	var mousepos = camera.get_global_mouse_position()-global_position
+	target_angle = Vector2.UP.angle_to(mousepos)
 	
 func _process(delta):
 	process_statemachine(delta)
@@ -30,8 +37,8 @@ func _process(delta):
 	
 func _integrate_forces(pstate):
 	pstate.angular_velocity = 0
-	pstate.linear_velocity = lerp(pstate.linear_velocity, velocity, .25)
-	var t = Transform2D(angle, pstate.transform.origin)
+	pstate.linear_velocity = lerp(pstate.linear_velocity, target_velocity, .25)
+	var t = Transform2D(target_angle, pstate.transform.origin)
 	pstate.transform = t
 	
 func change(new_state):
@@ -64,30 +71,30 @@ func process_statemachine(delta):
 	try_shoot()
 	state_time += delta
 	match (state):
-		PlayerStates.idle_enter:
+		PlayerStates.enter_idle:
 			change(PlayerStates.idle)
 			
 		PlayerStates.idle:
-			velocity = Vector2.ZERO
+			target_velocity = Vector2.ZERO
 			if (player_move_input().length() > .1):
 				change(PlayerStates.run)
 			if (try_dash()):
-				velocity = get_forward()
+				target_velocity = get_forward()
 			look_at_target()
 			
 		PlayerStates.run:
 			if (player_move_input().length() < .1):
-				change(PlayerStates.idle_enter)
-			velocity = player_move_input() * run_speed
+				change(PlayerStates.enter_idle)
+			target_velocity = player_move_input() * run_speed
 			try_dash()
 			look_at_target()
 			
 		PlayerStates.dash:
 			if (state == PlayerStates.idle):
-				velocity = target.global_position - global_position
-			velocity = velocity.normalized() * dash_speed * run_speed
+				target_velocity = target.global_position - global_position
+			target_velocity = target_velocity.normalized() * (dash_speed + run_speed)
 			if (state_time > .25):
-				change(PlayerStates.idle_enter)
+				change(PlayerStates.enter_idle)
 "
 
 [sub_resource type="CircleShape2D" id=2]
@@ -99,13 +106,11 @@ collision_layer = 2
 gravity_scale = 0.0
 can_sleep = false
 script = SubResource( 1 )
-run_speed = 200
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
 
 [node name="PlayerSprite" parent="." instance=ExtResource( 1 )]
-rotation = -1.5708
 
 [node name="Target" type="Node2D" parent="PlayerSprite"]
 position = Vector2( 0, -100 )

@@ -6,6 +6,7 @@ script/source = "extends Node
 onready var canvas = $Canvas
 onready var main_menu_button  = $\"Canvas/Back To Main Menu\"
 onready var exit_game_button = $\"Canvas/Exit Game\"
+onready var resume_game_button = $\"Canvas/Resume Game\"
 
 func _ready():
 	remove_child(canvas)
@@ -14,13 +15,9 @@ func _process(_delta):
 	if (Game.playing):
 		if (Input.is_action_just_pressed(\"pause_game\")):
 			if (get_child_count() == 0):
-				get_tree().paused = true
-				add_child(canvas)
-				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+				pause()
 			else:
-				get_tree().paused = false
-				remove_child(canvas);
-				Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+				unpause()
 	
 		if (main_menu_button.pressed):
 			remove_child(canvas)
@@ -29,6 +26,20 @@ func _process(_delta):
 			
 		if (exit_game_button.pressed):
 			get_tree().quit()
+		
+		if (resume_game_button.pressed):
+			unpause()
+
+func pause():
+	get_tree().paused = true
+	add_child(canvas)
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+func unpause():
+	get_tree().paused = false
+	remove_child(canvas);
+	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+	pass
 "
 
 [node name="PauseMenu" type="Node"]
@@ -69,6 +80,20 @@ margin_top = 41.742
 margin_right = 125.0
 margin_bottom = 91.742
 text = "Exit Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Resume Game" type="Button" parent="Canvas"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -125.0
+margin_top = -93.0768
+margin_right = 125.0
+margin_bottom = -43.0768
+text = "Resume Game"
 __meta__ = {
 "_edit_use_anchors_": false
 }
