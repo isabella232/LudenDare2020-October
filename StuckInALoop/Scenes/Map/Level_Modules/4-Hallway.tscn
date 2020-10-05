@@ -1,10 +1,15 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Map/Assets/Temp/2-cor-corner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Map/Assets/Temp/1-cor-straight.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Map/Assets/Temp/Cannon.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Pete/Flora/Clover.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Rick/Assets/Obstacles/Foilage/Bush-1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Rick/Assets/Obstacles/Walls/LogWall_Y.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Pete/Flora/Rock.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Rick/Assets/FX/Waves01.tscn" type="PackedScene" id=8]
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id=1]
 script/source = "extends Area2D
 
 func _on_EnableCannons_body_entered(_body):
@@ -12,10 +17,10 @@ func _on_EnableCannons_body_entered(_body):
 		child.set_process(true)
 "
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 58.9387, 169.63 )
 
-[sub_resource type="GDScript" id=4]
+[sub_resource type="GDScript" id=3]
 script/source = "extends Area2D
 
 func _ready():
@@ -30,10 +35,11 @@ func _on_DisableCannons_body_entered(body):
 	disable_children()
 "
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 201.418, 77.7266 )
 
 [node name="4-Hallway" type="Node2D"]
+z_index = -1
 
 [node name="4-HallwayNode2D115" parent="." instance=ExtResource( 2 )]
 position = Vector2( 128, -3.38699e-05 )
@@ -90,41 +96,229 @@ pause_mode = 2
 position = Vector2( 1.33484, 1.33484 )
 collision_layer = 0
 collision_mask = 2
-script = SubResource( 2 )
+script = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cannons/EnableCannons"]
 position = Vector2( 8.13892, -6.29219 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="DisableCannons" type="Area2D" parent="Cannons"]
 pause_mode = 2
 position = Vector2( 171.11, -1361.03 )
 collision_layer = 0
 collision_mask = 2
-script = SubResource( 4 )
+script = SubResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cannons/DisableCannons"]
 position = Vector2( -808.547, 2740.73 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="Cannon" parent="Cannons" instance=ExtResource( 3 )]
 position = Vector2( 897.477, 391.847 )
 rotation = 2.57905
+z_index = 1
 
 [node name="Cannon2" parent="Cannons" instance=ExtResource( 3 )]
 position = Vector2( 542.779, -247.956 )
 rotation = 2.57905
+z_index = 1
 
 [node name="Cannon3" parent="Cannons" instance=ExtResource( 3 )]
 position = Vector2( -59.5406, 486.214 )
 rotation = 2.57905
+z_index = 1
 
 [node name="Cannon4" parent="Cannons" instance=ExtResource( 3 )]
 position = Vector2( -47.5541, 1004.63 )
 rotation = 5.42451
+z_index = 2
 
 [node name="Cannon5" parent="Cannons" instance=ExtResource( 3 )]
 position = Vector2( -931.555, 1427.15 )
 rotation = 5.55404
+z_index = 1
+
+[node name="Bush-1" parent="." instance=ExtResource( 5 )]
+position = Vector2( 720, -80 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Rock" parent="." instance=ExtResource( 7 )]
+position = Vector2( 928, 208 )
+
+[node name="Rock2" parent="." instance=ExtResource( 7 )]
+position = Vector2( -160, 944 )
+z_index = 100
+z_as_relative = false
+
+[node name="Clover" parent="Rock2" instance=ExtResource( 4 )]
+position = Vector2( 872, -88 )
+z_index = -1
+z_as_relative = false
+
+[node name="Clover2" parent="Rock2" instance=ExtResource( 4 )]
+position = Vector2( 872, -144 )
+z_index = -1
+z_as_relative = false
+
+[node name="Clover3" parent="Rock2" instance=ExtResource( 4 )]
+position = Vector2( 112, -96 )
+z_index = -1
+z_as_relative = false
+
+[node name="Clover" parent="Rock2/Clover3" instance=ExtResource( 4 )]
+position = Vector2( -336, -160 )
+z_index = -1
+z_as_relative = false
+
+[node name="Clover2" parent="Rock2/Clover3" instance=ExtResource( 4 )]
+position = Vector2( -392, -168 )
+z_index = -1
+z_as_relative = false
+
+[node name="Clover3" parent="Rock2/Clover3" instance=ExtResource( 4 )]
+position = Vector2( 296, -744 )
+z_index = -1
+z_as_relative = false
+
+[node name="Clover4" parent="Rock2/Clover3" instance=ExtResource( 4 )]
+position = Vector2( 216, -744 )
+z_index = -1
+z_as_relative = false
+
+[node name="LogWall_Y" parent="." instance=ExtResource( 6 )]
+position = Vector2( 536, 184 )
+
+[node name="LogWall_Y2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 536, 264 )
+
+[node name="LogWall_Y3" parent="." instance=ExtResource( 6 )]
+position = Vector2( -744, 696 )
+
+[node name="LogWall_Y2" parent="LogWall_Y3" instance=ExtResource( 6 )]
+position = Vector2( 0, 81 )
+
+[node name="Clover" parent="." instance=ExtResource( 4 )]
+position = Vector2( -712, 840 )
+z_index = -1
+z_as_relative = false
+
+[node name="Clover2" parent="." instance=ExtResource( 4 )]
+position = Vector2( -720, 928 )
+z_index = -1
+z_as_relative = false
+
+[node name="Clover3" parent="." instance=ExtResource( 4 )]
+position = Vector2( -552, 1264 )
+z_index = -1
+z_as_relative = false
+
+[node name="Bush-2" parent="." instance=ExtResource( 5 )]
+position = Vector2( -568, 1232 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Bush-3" parent="." instance=ExtResource( 5 )]
+position = Vector2( -744, 878 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Node2D" parent="." instance=ExtResource( 8 )]
+position = Vector2( 408, 384 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Node2D18" parent="." instance=ExtResource( 8 )]
+position = Vector2( 880, 768 )
+rotation = 3.14159
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Node2D19" parent="." instance=ExtResource( 8 )]
+position = Vector2( 880, 584 )
+rotation = 3.14159
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Node2D20" parent="." instance=ExtResource( 8 )]
+position = Vector2( 880, 352 )
+rotation = 3.14159
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Node2D21" parent="." instance=ExtResource( 8 )]
+position = Vector2( 880, 40 )
+rotation = 3.14159
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Node2D3" parent="." instance=ExtResource( 8 )]
+position = Vector2( -872, 784 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Node2D4" parent="." instance=ExtResource( 8 )]
+position = Vector2( -872, 1016 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Node2D5" parent="." instance=ExtResource( 8 )]
+position = Vector2( -872, 1224 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Node2D8" parent="." instance=ExtResource( 8 )]
+position = Vector2( 248, 536 )
+rotation = 1.5708
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Node2D22" parent="." instance=ExtResource( 8 )]
+position = Vector2( 424, -224 )
+rotation = 1.5708
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Node2D24" parent="." instance=ExtResource( 8 )]
+position = Vector2( 712, -232 )
+rotation = 1.5708
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Node2D23" parent="." instance=ExtResource( 8 )]
+position = Vector2( 120, -232 )
+rotation = 1.5708
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Node2D10" parent="." instance=ExtResource( 8 )]
+position = Vector2( -136, 536 )
+rotation = 1.5708
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Node2D11" parent="." instance=ExtResource( 8 )]
+position = Vector2( -430, 536 )
+rotation = 1.5708
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Node2D12" parent="." instance=ExtResource( 8 )]
+position = Vector2( -718, 536 )
+rotation = 1.5708
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Node2D13" parent="." instance=ExtResource( 8 )]
+position = Vector2( 736, 1016 )
+rotation = -1.5708
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Node2D14" parent="." instance=ExtResource( 8 )]
+position = Vector2( 488, 1016 )
+rotation = -1.5708
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Node2D15" parent="." instance=ExtResource( 8 )]
+position = Vector2( 240, 1016 )
+rotation = -1.5708
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Node2D25" parent="." instance=ExtResource( 8 )]
+position = Vector2( 256, 200 )
+rotation = -1.5708
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Node2D17" parent="." instance=ExtResource( 8 )]
+position = Vector2( -230, 1016 )
+rotation = -1.5708
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Node2D7" parent="." instance=ExtResource( 8 )]
+position = Vector2( -408, 1224 )
+rotation = 3.14159
+scale = Vector2( 0.5, 0.5 )
 [connection signal="body_entered" from="Cannons/EnableCannons" to="Cannons/EnableCannons" method="_on_EnableCannons_body_entered"]
 [connection signal="body_entered" from="Cannons/DisableCannons" to="Cannons/DisableCannons" method="_on_DisableCannons_body_entered"]

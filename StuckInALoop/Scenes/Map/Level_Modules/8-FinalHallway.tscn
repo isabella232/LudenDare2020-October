@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Map/Assets/Temp/2-cor-corner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Map/Assets/Temp/1-cor-straight.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Pete/Wall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Pete/Flora/Clover.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Rick/Assets/Obstacles/Walls/LogWall_Y.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Rick/Assets/FX/Waves01.tscn" type="PackedScene" id=6]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -33,7 +36,7 @@ extents = Vector2( 138.025, 37.9256 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 137.425, 32.2305 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 64.2314, 168.118 )
 
 [node name="8-FinalHallway" type="Node2D"]
@@ -83,6 +86,97 @@ position = Vector2( -49.947, 3.935 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LastHallwayBehaviour/OpenDoor SpawnBoss"]
 position = Vector2( 42.0448, -3.36353 )
-shape = SubResource( 6 )
+shape = SubResource( 4 )
+
+[node name="Clover" parent="." instance=ExtResource( 4 )]
+position = Vector2( -992, 104 )
+
+[node name="Clover2" parent="." instance=ExtResource( 4 )]
+position = Vector2( -920, 96 )
+
+[node name="Clover3" parent="." instance=ExtResource( 4 )]
+position = Vector2( -792, -80 )
+
+[node name="Clover4" parent="." instance=ExtResource( 4 )]
+position = Vector2( -720, -72 )
+
+[node name="Node2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( -134, -216 )
+rotation = 1.5708
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Node2D2" parent="." instance=ExtResource( 6 )]
+position = Vector2( -406, -216 )
+rotation = 1.5708
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Node2D3" parent="." instance=ExtResource( 6 )]
+position = Vector2( -638, -216 )
+rotation = 1.5708
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Node2D4" parent="." instance=ExtResource( 6 )]
+position = Vector2( -214, 224 )
+rotation = -1.5708
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Node2D5" parent="." instance=ExtResource( 6 )]
+position = Vector2( -486, 224 )
+rotation = -1.5708
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Node2D6" parent="." instance=ExtResource( 6 )]
+position = Vector2( -742, 224 )
+rotation = -1.5708
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Node2D7" parent="." instance=ExtResource( 6 )]
+position = Vector2( -992, 224 )
+rotation = -1.5708
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Node2D8" parent="." instance=ExtResource( 6 )]
+position = Vector2( -1136, 46 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Node2D9" parent="." instance=ExtResource( 6 )]
+position = Vector2( -1136, -162 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Node2D10" parent="." instance=ExtResource( 6 )]
+position = Vector2( -1136, -402 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Node2D11" parent="." instance=ExtResource( 6 )]
+position = Vector2( -678, -442 )
+rotation = 3.14159
+scale = Vector2( 0.5, 0.5 )
+
+[node name="LogWall_Y" parent="." instance=ExtResource( 5 )]
+position = Vector2( -1000, -416 )
+
+[node name="LogWall_Y2" parent="." instance=ExtResource( 5 )]
+position = Vector2( -1000, -336 )
+
+[node name="LogWall_Y3" parent="." instance=ExtResource( 5 )]
+position = Vector2( -1000, -256 )
+
+[node name="LogWall_Y4" parent="." instance=ExtResource( 5 )]
+position = Vector2( -1000, -176 )
+
+[node name="LogWall_Y5" parent="." instance=ExtResource( 5 )]
+position = Vector2( -1000, -88 )
+
+[node name="LogWall_Y6" parent="." instance=ExtResource( 5 )]
+position = Vector2( -800, -416 )
+
+[node name="LogWall_Y7" parent="." instance=ExtResource( 5 )]
+position = Vector2( -800, -336 )
+
+[node name="LogWall_Y8" parent="." instance=ExtResource( 5 )]
+position = Vector2( -800, -256 )
+
+[node name="LogWall_Y9" parent="." instance=ExtResource( 5 )]
+position = Vector2( -800, -176 )
 [connection signal="body_entered" from="LastHallwayBehaviour/ShutDoor" to="LastHallwayBehaviour" method="_on_ShutDoor_body_entered"]
 [connection signal="body_entered" from="LastHallwayBehaviour/OpenDoor SpawnBoss" to="LastHallwayBehaviour" method="_on_OpenDoor_SpawnBoss_body_entered"]
