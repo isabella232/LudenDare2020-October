@@ -22,7 +22,7 @@ var damage = 3
 onready var animator: AnimationPlayer = $Boss/Boss_Sprite_Sheet/AnimationPlayer
 
 func _ready():
-	print(\"spawn\")
+	animator.play(\"BossIdleMove-Anim\")
 
 func _process(delta):
 	state_time += delta
