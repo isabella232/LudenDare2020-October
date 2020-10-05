@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Map/Assets/Temp/6-Room-door.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Map/Assets/Temp/5-Room-Floor.tscn" type="PackedScene" id=2]
@@ -7,10 +7,6 @@
 [ext_resource path="res://Pete/Enemy/Enemy_Spawner.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Rick/Assets/Obstacles/Trees/Tree-1.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Rick/Assets/Obstacles/Foilage/Bush-1.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Rick/Assets/FX/Waves02.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Pete/Flora/Clover.tscn" type="PackedScene" id=9]
-[ext_resource path="res://cam/Assets/Objects/Totem/Totem.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Pete/Flora/Clovers.png" type="Texture" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 74.916, 173.087 )
@@ -112,127 +108,5 @@ scale = Vector2( 0.4, 0.4 )
 [node name="Tree-1" parent="." instance=ExtResource( 6 )]
 position = Vector2( 48, -416 )
 scale = Vector2( 0.7, 0.7 )
-
-[node name="Node2D" parent="." instance=ExtResource( 8 )]
-position = Vector2( 64, 448 )
-rotation = -1.5708
-scale = Vector2( 0.4, 0.4 )
-
-[node name="Node2D2" parent="." instance=ExtResource( 8 )]
-position = Vector2( 256, 448 )
-rotation = -1.5708
-scale = Vector2( 0.4, 0.4 )
-
-[node name="Node2D3" parent="." instance=ExtResource( 8 )]
-position = Vector2( 448, 448 )
-rotation = -1.5708
-scale = Vector2( 0.4, 0.4 )
-
-[node name="Node2D4" parent="." instance=ExtResource( 8 )]
-position = Vector2( 639.75, 448 )
-rotation = -1.5708
-scale = Vector2( 0.4, 0.4 )
-
-[node name="Node2D5" parent="." instance=ExtResource( 8 )]
-position = Vector2( 776, 448 )
-rotation = -1.5708
-scale = Vector2( 0.4, 0.4 )
-
-[node name="Node2D6" parent="." instance=ExtResource( 8 )]
-position = Vector2( 928, 448 )
-rotation = -1.5708
-scale = Vector2( 0.4, 0.4 )
-
-[node name="Node2D7" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1096, 448 )
-rotation = -1.5708
-scale = Vector2( 0.4, 0.4 )
-
-[node name="Node2D8" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1264, 448 )
-rotation = -1.5708
-scale = Vector2( 0.4, 0.4 )
-
-[node name="Node2D9" parent="." instance=ExtResource( 8 )]
-position = Vector2( 32, -456 )
-rotation = 1.5708
-scale = Vector2( 0.4, 0.4 )
-
-[node name="Node2D10" parent="." instance=ExtResource( 8 )]
-position = Vector2( 224, -456 )
-rotation = 1.5708
-scale = Vector2( 0.4, 0.4 )
-
-[node name="Node2D11" parent="." instance=ExtResource( 8 )]
-position = Vector2( 416, -456 )
-rotation = 1.5708
-scale = Vector2( 0.4, 0.4 )
-
-[node name="Node2D12" parent="." instance=ExtResource( 8 )]
-position = Vector2( 607.75, -456 )
-rotation = 1.5708
-scale = Vector2( 0.4, 0.4 )
-
-[node name="Node2D13" parent="." instance=ExtResource( 8 )]
-position = Vector2( 744, -456 )
-rotation = 1.5708
-scale = Vector2( 0.4, 0.4 )
-
-[node name="Node2D14" parent="." instance=ExtResource( 8 )]
-position = Vector2( 896, -456 )
-rotation = 1.5708
-scale = Vector2( 0.4, 0.4 )
-
-[node name="Node2D15" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1064, -456 )
-rotation = 1.5708
-scale = Vector2( 0.4, 0.4 )
-
-[node name="Node2D16" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1232, -456 )
-rotation = 1.5708
-scale = Vector2( 0.4, 0.4 )
-
-[node name="Node2D17" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1344, -320 )
-rotation = 3.14159
-scale = Vector2( 0.4, 0.4 )
-
-[node name="Node2D18" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1344, -184 )
-rotation = 3.14159
-scale = Vector2( 0.4, 0.4 )
-
-[node name="Node2D19" parent="." instance=ExtResource( 8 )]
-position = Vector2( -64, -264.195 )
-scale = Vector2( 0.4, 0.4 )
-
-[node name="Totem" parent="." instance=ExtResource( 10 )]
-position = Vector2( 645.775, -40 )
-scale = Vector2( 0.7, 0.7 )
-z_index = 1
-
-[node name="Clover" parent="." instance=ExtResource( 9 )]
-position = Vector2( 592, 8 )
-
-[node name="Clover2" parent="." instance=ExtResource( 9 )]
-position = Vector2( 648, 31.7794 )
-
-[node name="Clovers" type="Sprite" parent="."]
-position = Vector2( 1128, 336 )
-scale = Vector2( 0.625, 0.625 )
-texture = ExtResource( 11 )
-
-[node name="Clovers2" type="Sprite" parent="."]
-position = Vector2( 1216, 324 )
-rotation = -0.6353
-scale = Vector2( 0.75, 0.6875 )
-texture = ExtResource( 11 )
-
-[node name="Tree-2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1200, 289.2 )
-scale = Vector2( 0.8, 0.8 )
-z_index = 10
-z_as_relative = false
 
 [editable path="Enemy_Spawner"]

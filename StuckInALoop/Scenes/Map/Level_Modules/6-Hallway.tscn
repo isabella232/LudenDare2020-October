@@ -1,12 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Map/Assets/Temp/2-cor-corner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Map/Assets/Temp/1-cor-straight.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Pete/Flora/Clover.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Map/Assets/Temp/Cannon.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Rick/Assets/Obstacles/Foilage/Bush-1.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Rick/Assets/Obstacles/Walls/LongWall_X.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Rick/Assets/FX/Waves01.tscn" type="PackedScene" id=7]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Area2D
@@ -36,10 +32,9 @@ func _on_DisableCannons_body_entered(body):
 extents = Vector2( 44.4021, 161.219 )
 
 [node name="6-Hallway" type="Node2D"]
-z_index = -1
 
 [node name="6-HallwayNode2D29" parent="." instance=ExtResource( 2 )]
-position = Vector2( 128, -2.77556e-17 )
+position = Vector2( 128, 2.77556e-17 )
 rotation = 1.5708
 
 [node name="6-HallwayNode2D49" parent="." instance=ExtResource( 2 )]
@@ -137,122 +132,5 @@ rotation = 0.979387
 [node name="Cannon3" parent="Cannons" instance=ExtResource( 4 )]
 position = Vector2( 1752.35, -343.266 )
 rotation = 2.2939
-
-[node name="Bush-1" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1488, -88 )
-scale = Vector2( 0.7, 0.7 )
-
-[node name="Clover" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1312, 112 )
-
-[node name="Clover2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1488, 600 )
-
-[node name="Clover3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1330, 152 )
-
-[node name="Clover4" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1378, 128 )
-
-[node name="Clover5" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1250, 432 )
-
-[node name="Clover6" parent="." instance=ExtResource( 3 )]
-position = Vector2( 186, 597 )
-
-[node name="Clover7" parent="." instance=ExtResource( 3 )]
-position = Vector2( 114, 600 )
-
-[node name="Clover8" parent="." instance=ExtResource( 3 )]
-position = Vector2( 522, 440 )
-
-[node name="LongWall_X" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1200, 102 )
-
-[node name="LongWall_X3" parent="." instance=ExtResource( 6 )]
-position = Vector2( 800, -123 )
-
-[node name="LongWall_X4" parent="." instance=ExtResource( 6 )]
-position = Vector2( 904, -123 )
-
-[node name="LongWall_X5" parent="." instance=ExtResource( 6 )]
-position = Vector2( 384, 93 )
-
-[node name="LongWall_X6" parent="." instance=ExtResource( 6 )]
-position = Vector2( 680, 93 )
-
-[node name="LongWall_X7" parent="." instance=ExtResource( 6 )]
-position = Vector2( 760, 613 )
-
-[node name="LongWall_X8" parent="." instance=ExtResource( 6 )]
-position = Vector2( 552, 397 )
-
-[node name="LongWall_X9" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1032, 397 )
-
-[node name="Node2D" parent="." instance=ExtResource( 7 )]
-position = Vector2( 192, 712 )
-rotation = -1.5708
-scale = Vector2( 0.5, 0.5 )
-
-[node name="Node2D2" parent="." instance=ExtResource( 7 )]
-position = Vector2( 456, 712 )
-rotation = -1.5708
-scale = Vector2( 0.5, 0.5 )
-
-[node name="Node2D3" parent="." instance=ExtResource( 7 )]
-position = Vector2( 752, 712 )
-rotation = -1.5708
-scale = Vector2( 0.5, 0.5 )
-
-[node name="Node2D4" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1037, 712 )
-rotation = -1.5708
-scale = Vector2( 0.5, 0.5 )
-
-[node name="Node2D5" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1290, 712 )
-rotation = -1.5708
-scale = Vector2( 0.5, 0.5 )
-
-[node name="Node2D6" parent="." instance=ExtResource( 7 )]
-position = Vector2( 184, -187 )
-rotation = 1.5708
-scale = Vector2( 0.5, 0.5 )
-
-[node name="Node2D7" parent="." instance=ExtResource( 7 )]
-position = Vector2( 448, -187 )
-rotation = 1.5708
-scale = Vector2( 0.5, 0.5 )
-
-[node name="Node2D8" parent="." instance=ExtResource( 7 )]
-position = Vector2( 744, -187 )
-rotation = 1.5708
-scale = Vector2( 0.5, 0.5 )
-
-[node name="Node2D9" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1029, -187 )
-rotation = 1.5708
-scale = Vector2( 0.5, 0.5 )
-
-[node name="Node2D10" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1282, -187 )
-rotation = 1.5708
-scale = Vector2( 0.5, 0.5 )
-
-[node name="Node2D11" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1602, 78 )
-rotation = -3.14159
-scale = Vector2( 0.5, 0.5 )
-
-[node name="Node2D12" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1602, 342 )
-rotation = -3.14159
-scale = Vector2( 0.5, 0.5 )
-
-[node name="Node2D13" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1602, 590 )
-rotation = -3.14159
-scale = Vector2( 0.5, 0.5 )
 [connection signal="body_entered" from="Cannons/EnableCannons" to="Cannons/EnableCannons" method="_on_EnableCannons_body_entered"]
 [connection signal="body_entered" from="Cannons/DisableCannons" to="Cannons/DisableCannons" method="_on_DisableCannons_body_entered"]

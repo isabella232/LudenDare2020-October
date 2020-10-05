@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Map/Assets/Temp/5-Room-Floor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Map/Assets/Temp/4-Room-edge.tscn" type="PackedScene" id=2]
@@ -6,12 +6,12 @@
 [ext_resource path="res://Scenes/Map/Assets/Temp/7-Room-door-edge.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Pete/Enemy/Enemy_Spawner.tscn" type="PackedScene" id=5]
 [ext_resource path="res://cam/Assets/Objects/Totem/Totem.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Pete/Flora/Clover.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Rick/Assets/Obstacles/Foilage/Bush-1.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Rick/Assets/FX/Waves01.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 78.5098, 205.521 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 98.571, 212.817 )
 
 [node name="7-EnemyRoom" type="Node2D"]
 
@@ -120,10 +120,15 @@ position = Vector2( -1528.27, 362.59 )
 position = Vector2( 1519.28, -362.59 )
 shape = SubResource( 1 )
 
+[node name="CollisionShape2D" parent="Enemy_Spawner/Reset Spawner" index="0"]
+position = Vector2( -1535.56, 412.642 )
+shape = SubResource( 2 )
+
 [node name="Totem" parent="." instance=ExtResource( 6 )]
 position = Vector2( -907.856, 360.346 )
 scale = Vector2( 0.75, 0.75 )
 
+<<<<<<< HEAD
 [node name="Bush-1" parent="." instance=ExtResource( 8 )]
 position = Vector2( -96, 816 )
 scale = Vector2( 0.7, 0.7 )
@@ -235,4 +240,6 @@ position = Vector2( -1728, -248 )
 rotation = 1.5708
 scale = Vector2( 0.5, 0.5 )
 
+=======
+>>>>>>> parent of d26c867... Level update
 [editable path="Enemy_Spawner"]
