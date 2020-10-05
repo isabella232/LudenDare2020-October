@@ -6,24 +6,34 @@
 script/source = "extends Node2D
 
 var cannon_ball = load(\"res://Pete/CannonBalls/CannonBall.tscn\")
+var explosive = load(\"res://Rick/Assets/FX/Cannon_Fire_Explosion.tscn\")
 onready var target = $Target
 
 # Declare member variables here. Examples:
 # var a = 2
 # var b = \"text\"
 
-var delay = 3
-var time_since_shot = 3
+var delay = randf()*3
+var time_since_shot = delay
 var enabled = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	time_since_shot += delta
 	if (time_since_shot > delay):
+		var current_scene = get_tree().current_scene
+		var effect = explosive.instance()
+		print(effect)
+		current_scene.add_child(effect)
+		effect.global_position = target.global_position
+		var forward = (target.global_position - global_position).normalized()
+		effect.rotation = Vector2.RIGHT.angle_to(forward)
+		
 		var ball = cannon_ball.instance()
-		get_tree().current_scene.add_child(ball)
+		current_scene.add_child(ball)
 		ball.global_position = target.global_position
-		ball.velocity = (target.global_position - global_position)
+		ball.velocity = forward
+		
 		time_since_shot = 0
 		delay = 3/(Game.loops + 1)
 	pass
@@ -37,4 +47,4 @@ position = Vector2( 30.9543, -11.1118 )
 texture = ExtResource( 1 )
 
 [node name="Target" type="Node2D" parent="."]
-position = Vector2( 75, 0 )
+position = Vector2( 85.5947, 0 )

@@ -1,10 +1,37 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Map/Assets/Temp/2-cor-corner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Map/Assets/Temp/1-cor-straight.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Rick/Assets/Obstacles/Walls/LongWall_X.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Rick/Assets/Obstacles/Walls/LogWall_Y.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Pete/Enemy/Cannons.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Map/Assets/Temp/Cannon.tscn" type="PackedScene" id=5]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Area2D
+
+func _on_EnableCannons_body_entered(_body):
+	for child in get_parent().get_children():
+		child.set_process(true)
+"
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 166.926, 33.5054 )
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Area2D
+
+func _ready():
+	for child in get_parent().get_children():
+		child.set_process(false)
+
+# warning-ignore:unused_argument
+func _on_DisableCannons_body_entered(body):
+	for child in get_parent().get_children():
+		child.set_process(false)
+"
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 44.4021, 161.219 )
 
 [node name="1-Hallway" type="Node2D"]
 
@@ -91,4 +118,43 @@ position = Vector2( 95, -1528 )
 [node name="LongWall_X4" parent="." instance=ExtResource( 3 )]
 position = Vector2( 199, -1528 )
 
-[node name="Cannons" parent="." instance=ExtResource( 5 )]
+[node name="Cannons" type="Node2D" parent="."]
+pause_mode = 1
+
+[node name="EnableCannons" type="Area2D" parent="Cannons"]
+pause_mode = 2
+position = Vector2( 1.33484, 1.33484 )
+collision_layer = 0
+collision_mask = 2
+script = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cannons/EnableCannons"]
+position = Vector2( -3.1748, -31.748 )
+shape = SubResource( 3 )
+
+[node name="DisableCannons" type="Area2D" parent="Cannons"]
+pause_mode = 2
+position = Vector2( 171.11, -1361.03 )
+collision_layer = 0
+collision_mask = 2
+script = SubResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cannons/DisableCannons"]
+position = Vector2( -3.1748, -31.748 )
+shape = SubResource( 5 )
+
+[node name="Cannon" parent="Cannons" instance=ExtResource( 5 )]
+position = Vector2( -352.403, -504.794 )
+
+[node name="Cannon2" parent="Cannons" instance=ExtResource( 5 )]
+position = Vector2( -349.228, -1235 )
+
+[node name="Cannon3" parent="Cannons" instance=ExtResource( 5 )]
+position = Vector2( 327.005, -1031.81 )
+rotation = 3.14159
+
+[node name="Cannon4" parent="Cannons" instance=ExtResource( 5 )]
+position = Vector2( 327.005, -679.408 )
+rotation = 3.14159
+[connection signal="body_entered" from="Cannons/EnableCannons" to="Cannons/EnableCannons" method="_on_EnableCannons_body_entered"]
+[connection signal="body_entered" from="Cannons/DisableCannons" to="Cannons/DisableCannons" method="_on_DisableCannons_body_entered"]

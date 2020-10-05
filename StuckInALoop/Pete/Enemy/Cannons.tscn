@@ -1,36 +1,6 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Map/Assets/Temp/Cannon.tscn" type="PackedScene" id=1]
-
-[sub_resource type="GDScript" id=1]
-script/source = "extends Node2D
-
-var cannon_ball = load(\"res://Pete/CannonBalls/CannonBall.tscn\")
-onready var target = $Target
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = \"text\"
-
-var delay = randf()*2
-var time_since_shot = 0
-var enabled = false
-export var debug = false
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	time_since_shot += delta
-	if (time_since_shot > delay):
-		var ball = cannon_ball.instance()
-		get_tree().current_scene.add_child(ball)
-		ball.global_position = target.global_position
-		ball.velocity = (target.global_position - global_position)
-		time_since_shot = 0
-		delay = (randf()+ 2)/(Game.loops + 1)
-		if (debug):
-			print(time_since_shot);
-	pass
-"
 
 [sub_resource type="GDScript" id=2]
 script/source = "extends Area2D
@@ -62,26 +32,6 @@ extents = Vector2( 44.4021, 161.219 )
 [node name="Cannons" type="Node2D"]
 pause_mode = 1
 
-[node name="Cannon" parent="." instance=ExtResource( 1 )]
-position = Vector2( 332.015, -312.888 )
-rotation = 3.12038
-script = SubResource( 1 )
-
-[node name="Cannon3" parent="." instance=ExtResource( 1 )]
-position = Vector2( -314.057, -881.177 )
-rotation = -0.0101283
-script = SubResource( 1 )
-
-[node name="Cannon4" parent="." instance=ExtResource( 1 )]
-position = Vector2( -293.42, -1243.1 )
-rotation = -0.0101283
-script = SubResource( 1 )
-
-[node name="Cannon2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 355.826, -698.626 )
-rotation = 3.12038
-script = SubResource( 1 )
-
 [node name="EnableCannons" type="Area2D" parent="."]
 pause_mode = 2
 position = Vector2( 1.33484, 1.33484 )
@@ -103,5 +53,7 @@ script = SubResource( 4 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DisableCannons"]
 position = Vector2( -3.1748, -31.748 )
 shape = SubResource( 5 )
+
+[node name="Cannon" parent="." instance=ExtResource( 1 )]
 [connection signal="body_entered" from="EnableCannons" to="EnableCannons" method="_on_EnableCannons_body_entered"]
 [connection signal="body_entered" from="DisableCannons" to="DisableCannons" method="_on_DisableCannons_body_entered"]
