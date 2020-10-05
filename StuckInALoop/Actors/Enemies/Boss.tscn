@@ -1,28 +1,37 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Rick/Assets/Boss/Boss.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Actors/Enemies/Cannon_spawners.gd" type="Script" id=2]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends RigidBody2D
 
 enum states {
+	ram,
 	spiral_attack,
+	enter_chase,
 	chase,
-	death
+	death,
+	enter_death
 	}
 
 export var move_speed = 100
 var target 
-var current_state = states.chase
+var current_state = states.enter_chase
 var state_time = 0
 var velocity = Vector2.ZERO
 var health = 10
 var projectile = load(\"res://Pete/CannonBalls/CannonBall.tscn\")
 var damage = 3
 onready var animator: AnimationPlayer = $Boss/Boss_Sprite_Sheet/AnimationPlayer
+onready var cannon_spawner = $Cannon_spawners
+var damage_timer = 0
+
+var timer = 0
 
 func _ready():
 	animator.play(\"BossIdleMove-Anim\")
+	health = 10 + 5*Game.loops
 
 func _process(delta):
 	state_time += delta
@@ -42,9 +51,65 @@ func _integrate_forces(state):
 	state.linear_velocity = velocity
 	pass
 
+func player_direction():
+	return (Game.player.global_position - global_position).normalized()
+
+var attack_delay
+
+var ram_direction: Vector2
 # warning-ignore:unused_argument
 func process_statemachine(delta):
+	if (current_state != states.death):
+		if (damage_timer > 0):
+			modulate = lerp(Color.white, Color.red, damage_timer)
+			damage_timer -= delta * 8
+		else:
+			 modulate = Color.white
+	print(states.keys()[current_state]);
+	
 	match(current_state):
+		states.enter_chase:
+			attack_delay = randf()*2
+			change_state(states.chase)
+		
+		states.chase:
+			velocity = player_direction() * move_speed *(1 + .02 * float(Game.loops))
+			if (state_time > attack_delay):
+				if (randf() > .5):
+					change_state(states.ram)
+					ram_direction = player_direction()
+				else:
+					change_state(states.spiral_attack)
+					attack_delay = .25
+		
+		states.ram:
+			velocity = ram_direction * (move_speed +  500 * (1.0 + float(Game.loops)/10.0))
+			if (state_time > 1):
+				change_state(states.enter_chase)
+		
+		states.spiral_attack:
+			velocity = Vector2.ZERO
+			if (state_time > attack_delay):
+				attack_delay= state_time + .125
+				for child in cannon_spawner.get_children():
+					var cannon = projectile.instance()
+					get_tree().current_scene.add_child(cannon)
+					cannon.global_position = child.global_position
+					cannon.velocity = child.global_position - global_position
+			
+			if (state_time > 2):
+				change_state(states.enter_chase)
+		
+		states.enter_death:
+			velocity = Vector2.ZERO
+			modulate = Color.white
+			animator.play(\"BossDeath-Anim\")
+			change_state(states.death)
+			
+		states.death:
+			sleeping = true
+			if (!animator.is_playing()):
+				queue_free()
 		_:
 			pass
 
@@ -54,16 +119,22 @@ signal on_damage(amount, recoil_direction)
 
 
 func _on_Boss_on_damage(amount, recoil_direction):
-	velocity += recoil_direction.normalized() * 100
 	health	-= amount
-	if (health <= 0):
-		queue_free()
+	damage_timer = 1
+	if (health <= 0 && current_state != states.death):
+		change_state(states.enter_death)
+
+
+func _on_Boss_body_entered(body):
+	body.emit_signal(\"on_damage\", damage, (body.global_position - global_position).normalized()*1000)
 "
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 133.249
 
 [node name="Boss" type="RigidBody2D"]
+contacts_reported = 1
+contact_monitor = true
 script = SubResource( 1 )
 
 [node name="Boss" parent="." instance=ExtResource( 1 )]
@@ -71,4 +142,20 @@ script = SubResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -1.05945, -16.9514 )
 shape = SubResource( 2 )
+
+[node name="Cannon_spawners" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="Node2D" type="Node2D" parent="Cannon_spawners"]
+position = Vector2( 200, 0 )
+
+[node name="Node2D2" type="Node2D" parent="Cannon_spawners"]
+position = Vector2( -200, 0 )
+
+[node name="Node2D3" type="Node2D" parent="Cannon_spawners"]
+position = Vector2( 0, -200 )
+
+[node name="Node2D4" type="Node2D" parent="Cannon_spawners"]
+position = Vector2( 0, 200 )
+[connection signal="body_entered" from="." to="." method="_on_Boss_body_entered"]
 [connection signal="on_damage" from="." to="." method="_on_Boss_on_damage"]
