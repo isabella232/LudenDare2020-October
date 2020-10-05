@@ -84,7 +84,7 @@ func try_attack(delta):
 func process_statemachine(delta):
 	match(current_state):
 		grunt_states.enter_idle:
-			animator.play(\"Walk\")
+			animator.play(\"Idle\")
 			velocity = Vector2.ZERO
 			change_state(grunt_states.idle)
 		
