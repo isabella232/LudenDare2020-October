@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Rick/Assets/Player/Player_Sprite_Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Rick/Assets/Audio/Player-dash-SoundFX.wav" type="AudioStream" id=2]
 [ext_resource path="res://Rick/Assets/Audio/Player-Attack_SoundFX.wav" type="AudioStream" id=3]
+[ext_resource path="res://Rick/Assets/Audio/Player-Death-SoundFX.wav" type="AudioStream" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Player-AttackAnim"
@@ -66,7 +67,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=3]
 resource_name = "Player-DeathAnim"
-length = 6.009
+length = 4.9
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -78,6 +79,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 84 ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("AnimationPlayer/AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 4 )
+} ],
+"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="Animation" id=4]
@@ -115,7 +130,7 @@ tracks/0/keys = {
 texture = ExtResource( 1 )
 vframes = 11
 hframes = 8
-frame = 17
+frame = 84
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 2.0
@@ -126,5 +141,5 @@ anims/Player-IdleAnim = SubResource( 4 )
 anims/Player-RunAnim = SubResource( 5 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AnimationPlayer"]
-stream = ExtResource( 3 )
+stream = ExtResource( 4 )
 volume_db = -5.0
