@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Grass corner tile.png-d3fad259b4e4ac492f528737fe7a1f5b.stex"
+path="res://.import/Weapon.png-4cf28d3709ca36c07732501ca84008e2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://cam/Assets/Tiles/Grass corner tile.png"
-dest_files=[ "res://.import/Grass corner tile.png-d3fad259b4e4ac492f528737fe7a1f5b.stex" ]
+source_file="res://Pete/Player/Weapon.png"
+dest_files=[ "res://.import/Weapon.png-4cf28d3709ca36c07732501ca84008e2.stex" ]
 
 [params]
 

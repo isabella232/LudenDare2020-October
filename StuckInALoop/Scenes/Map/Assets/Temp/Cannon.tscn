@@ -13,7 +13,7 @@ onready var target = $Target
 # var a = 2
 # var b = \"text\"
 
-var delay = randf()*3
+var delay = 0 
 var time_since_shot = 0
 var enabled = false
 
@@ -34,7 +34,9 @@ func _process(delta):
 		ball.velocity = forward
 		
 		time_since_shot = 0
-		delay = 3/float(Game.loops + 1)
+		delay = 2 - float(Game.loops)*.25;
+		if (delay < .5):
+			delay = .5
 	pass
 "
 

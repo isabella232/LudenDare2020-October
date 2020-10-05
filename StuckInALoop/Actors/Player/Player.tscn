@@ -17,6 +17,7 @@ onready var target = $Target
 onready var sprite = $Sprite
 onready var animator : AnimationPlayer = $Sprite/AnimationPlayer
 var hit_effect = load(\"res://Rick/Assets/FX/Hit_FX.tscn\")
+var projectile = load(\"res://Pete/Player/PlayerWeapon.tscn\")
 
 var health = 10
 var recoil_velocity = Vector2.ZERO
@@ -33,6 +34,7 @@ enum PlayerStates{
 	dash,
 	enter_damage,
 	damage,
+	enter_death,
 	death
 }
 
@@ -95,8 +97,8 @@ func get_forward():
 
 func try_shoot():
 	if (Input.is_action_just_pressed(\"player_shoot\")):
-		var bullet = load(\"res://Pete/Bullet/Bullet.tscn\").instance()
-		bullet.global_position = global_position + get_forward()* 25
+		var bullet = projectile.instance()
+		bullet.global_position = global_position + get_forward()* 50
 		bullet.velocity = get_forward()
 		get_tree().current_scene.add_child(bullet)
 		change(PlayerStates.enter_attack)
@@ -177,12 +179,17 @@ func process_statemachine(delta):
 				change(PlayerStates.enter_idle)
 				modulate = Color.white
 		
+		PlayerStates.enter_death:
+			animator.play(\"Player-DeathAnim\")
+			Game.playing = false
+			change(PlayerStates.death)
+		
 		PlayerStates.death:
 			target_velocity = Vector2.ZERO
-			modulate = Color(.2, .2, .2)
-			Game.playing = false
-			var game_over = load(\"res://Scenes/Game Over/Game_Over.tscn\").instance()
-			get_tree().current_scene.add_child(game_over)
+			modulate = Color.white
+			if (!animator.is_playing()):
+				var game_over = load(\"res://Scenes/Game Over/Game_Over.tscn\").instance()
+				get_tree().current_scene.add_child(game_over)
 
 # warning-ignore:unused_signal
 signal on_damage(amount, recoil_direction)
@@ -191,11 +198,12 @@ func _on_Player_on_damage(amount, recoil_direction):
 	if (god_mode):
 		return
 	health -= amount
-	if (health <= 0):
-		change(PlayerStates.death)
-	else:
+	if (health > 0):
 		change(PlayerStates.enter_damage)
 		recoil_velocity = recoil_direction
+	else:
+		if (state != PlayerStates.death):
+			change(PlayerStates.enter_death)
 "
 
 [sub_resource type="CircleShape2D" id=2]
@@ -207,17 +215,19 @@ script/source = "extends Node2D
 var heart = load(\"res://Pete/Player/Health_Point.tscn\")
 
 
+# warning-ignore:unused_argument
 func _process(delta):
-	if (!Game.playing ):
-		return
 	var count = Game.player.health - get_child_count()
 	var child_count = get_child_count()
 	if (count > 0):
 		for _n in range(count):
 			add_child(heart.instance())
 	if (count < 0):
-		for _n in range(-count):
-			get_child(child_count - _n - 1).kill = true
+		var sequence = 0
+		for child in get_children():
+			if (child_count - 1 + count < sequence):
+				child.kill = true;
+			sequence += 1
 
 	if (count != 0):
 		for n in range(get_child_count()):
@@ -229,6 +239,7 @@ script/source = "extends Node2D
 
 var skull = load(\"res://Pete/Player/Loop_Count.tscn\")
 
+# warning-ignore:unused_argument
 func _process(delta):
 	if (!Game.playing ):
 		return

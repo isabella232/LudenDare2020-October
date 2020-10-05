@@ -65,7 +65,7 @@ func process_statemachine(delta):
 			damage_timer -= delta * 8
 		else:
 			 modulate = Color.white
-	print(states.keys()[current_state]);
+	#print(states.keys()[current_state]);
 	
 	match(current_state):
 		states.enter_chase:
