@@ -1,0 +1,144 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Pete/Player/hearts.png" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Node2D
+
+var kill = false
+onready var animator: AnimationPlayer = $AnimationPlayer
+
+func _ready():
+	animator.play(\"spawn\")
+
+var beating = false 
+
+func _process(delta):
+	if (!animator.is_playing()):
+		if (kill):
+			queue_free()
+		else:
+			animator.play(\"Beat\")
+	if (kill):
+		animator.play(\"Loss\")
+"
+
+[sub_resource type="Animation" id=1]
+resource_name = "Beat"
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("hearts:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.35, 0.35 ), Vector2( 0.398093, 0.398093 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Loss"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("hearts:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.25 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.27451, 0.219608, 0.219608, 1 ), Color( 0.27451, 0.219608, 0.219608, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("hearts:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.0583392, 0.25 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -14.7958 ), Vector2( 0, 56.3738 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("hearts:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 174.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "spawn"
+tracks/0/type = "value"
+tracks/0/path = NodePath("hearts:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.123331, 0.233357, 0.337753 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.35, 0.35 ), Vector2( 0.843195, 0.843195 ), Vector2( 0.194125, 0.194125 ), Vector2( 0.35, 0.35 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("hearts:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("hearts:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("hearts:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Heart" type="Node2D"]
+script = SubResource( 4 )
+
+[node name="hearts" type="Sprite" parent="."]
+scale = Vector2( 0.35, 0.35 )
+texture = ExtResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Beat = SubResource( 1 )
+anims/Loss = SubResource( 2 )
+anims/spawn = SubResource( 3 )

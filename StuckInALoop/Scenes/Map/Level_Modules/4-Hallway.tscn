@@ -19,13 +19,15 @@ extents = Vector2( 58.9387, 169.63 )
 script/source = "extends Area2D
 
 func _ready():
+	call_deferred(\"disable_children\")
+
+func disable_children():
 	for child in get_parent().get_children():
 		child.set_process(false)
 
 # warning-ignore:unused_argument
 func _on_DisableCannons_body_entered(body):
-	for child in get_parent().get_children():
-		child.set_process(false)
+	disable_children()
 "
 
 [sub_resource type="RectangleShape2D" id=5]
