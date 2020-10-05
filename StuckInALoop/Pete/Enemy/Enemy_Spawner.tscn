@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -6,12 +6,12 @@ script/source = "extends Node2D
 onready var spawn = $\"Spawn Positions\"
 var enemy = load(\"res://Actors/Enemies/Grunt.tscn\")
 
-var spawnable = true
 var rand = RandomNumberGenerator.new()
+var loop = -1
 
 func _on_Spawn_Enemies_body_entered(_body):
-	if (spawnable):
-		spawnable = false
+	if (loop != Game.loops):
+		loop = Game.loops
 # warning-ignore:unused_variable
 		for n in range(Game.loops + 2):
 			call_deferred(\"spawn_deffered\", enemy.instance())
@@ -20,18 +20,10 @@ func spawn_deffered(enemey):
 	get_tree().current_scene.add_child(enemey)
 	var index = rand.randi_range(0, spawn.get_child_count()-1)
 	enemey.global_position = spawn.get_child(index).global_position
-	
-
-# warning-ignore:unused_argument
-func _on_Reset_Spawner_body_entered(body):
-	spawnable = true
 "
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 50.7326, 138.13 )
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 36.364, 129.671 )
 
 [node name="Enemy_Spawner" type="Node2D"]
 script = SubResource( 1 )
@@ -42,15 +34,6 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spawn Enemies"]
 shape = SubResource( 2 )
-
-[node name="Reset Spawner" type="Area2D" parent="."]
-position = Vector2( 1263.78, -3.79988 )
-collision_layer = 2147483648
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Reset Spawner"]
-position = Vector2( 10.6908, -0.8909 )
-shape = SubResource( 3 )
 
 [node name="Spawn Positions" type="Node2D" parent="."]
 
@@ -75,4 +58,3 @@ position = Vector2( 779.414, -239.698 )
 [node name="Node2D7" type="Node2D" parent="Spawn Positions"]
 position = Vector2( 509.556, -292.082 )
 [connection signal="body_entered" from="Spawn Enemies" to="." method="_on_Spawn_Enemies_body_entered"]
-[connection signal="body_entered" from="Reset Spawner" to="." method="_on_Reset_Spawner_body_entered"]
