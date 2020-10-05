@@ -1,10 +1,17 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/Map/Assets/Temp/2-cor-corner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Map/Assets/Temp/1-cor-straight.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Map/Assets/Temp/Cannon.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Pete/Flora/Clover.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Pete/Flora/Rock.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Rick/Assets/Obstacles/Foilage/Bush-1.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Rick/Assets/Obstacles/Trees/Tree-1.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Rick/Assets/Obstacles/Walls/LogWall_Y.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Rick/Assets/Obstacles/Walls/LongWall_X.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Rick/Assets/FX/Waves01.tscn" type="PackedScene" id=10]
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id=1]
 script/source = "extends Area2D
 
 func _on_EnableCannons_body_entered(_body):
@@ -12,10 +19,10 @@ func _on_EnableCannons_body_entered(_body):
 		child.set_process(true)
 "
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 58.9387, 169.63 )
 
-[sub_resource type="GDScript" id=4]
+[sub_resource type="GDScript" id=3]
 script/source = "extends Area2D
 
 func _ready():
@@ -30,7 +37,7 @@ func _on_DisableCannons_body_entered(body):
 	disable_children()
 "
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 201.418, 77.7266 )
 
 [node name="4-Hallway" type="Node2D"]
@@ -90,22 +97,22 @@ pause_mode = 2
 position = Vector2( 1.33484, 1.33484 )
 collision_layer = 0
 collision_mask = 2
-script = SubResource( 2 )
+script = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cannons/EnableCannons"]
 position = Vector2( 8.13892, -6.29219 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="DisableCannons" type="Area2D" parent="Cannons"]
 pause_mode = 2
 position = Vector2( 171.11, -1361.03 )
 collision_layer = 0
 collision_mask = 2
-script = SubResource( 4 )
+script = SubResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cannons/DisableCannons"]
 position = Vector2( -808.547, 2740.73 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="Cannon" parent="Cannons" instance=ExtResource( 3 )]
 position = Vector2( 897.477, 391.847 )
@@ -126,5 +133,162 @@ rotation = 5.42451
 [node name="Cannon5" parent="Cannons" instance=ExtResource( 3 )]
 position = Vector2( -931.555, 1427.15 )
 rotation = 5.55404
+
+[node name="Clover" parent="." instance=ExtResource( 4 )]
+position = Vector2( 148.146, -38.9927 )
+
+[node name="Clover2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 222.628, 62.8306 )
+
+[node name="Clover3" parent="." instance=ExtResource( 4 )]
+position = Vector2( -447.709, 722.797 )
+rotation = -0.52413
+
+[node name="Clover4" parent="." instance=ExtResource( 4 )]
+position = Vector2( -300.631, 698.284 )
+rotation = 0.924589
+
+[node name="Clover5" parent="." instance=ExtResource( 4 )]
+position = Vector2( -344.943, 809.535 )
+rotation = 0.511058
+
+[node name="Clover6" parent="." instance=ExtResource( 4 )]
+position = Vector2( -369.456, 713.369 )
+rotation = -2.58844
+
+[node name="Clover7" parent="." instance=ExtResource( 4 )]
+position = Vector2( 677.062, 825.563 )
+rotation = -2.58844
+scale = Vector2( 0.791437, 0.688887 )
+
+[node name="Clover8" parent="." instance=ExtResource( 4 )]
+position = Vector2( 684.605, 761.452 )
+rotation = -0.156389
+scale = Vector2( 1.19802, 1.0545 )
+
+[node name="Rock" parent="." instance=ExtResource( 5 )]
+position = Vector2( -697.945, 675.584 )
+scale = Vector2( 0.90625, 0.419999 )
+
+[node name="Bush-1" parent="." instance=ExtResource( 6 )]
+position = Vector2( 597.675, 82.1669 )
+rotation = -0.458212
+scale = Vector2( 0.612407, 0.612407 )
+
+[node name="Bush-2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 643.181, 652.573 )
+rotation = -0.207496
+scale = Vector2( 0.612407, 0.612407 )
+
+[node name="Bush-3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 566.12, 766.423 )
+scale = Vector2( 0.612407, 0.612407 )
+
+[node name="Bush-4" parent="." instance=ExtResource( 6 )]
+position = Vector2( 700.52, 805.579 )
+scale = Vector2( 0.612407, 0.612407 )
+
+[node name="Bush-5" parent="." instance=ExtResource( 6 )]
+position = Vector2( -298.485, 821.453 )
+scale = Vector2( 0.612407, 0.612407 )
+
+[node name="Bush-6" parent="." instance=ExtResource( 6 )]
+position = Vector2( -397.962, 786.53 )
+rotation = 0.395523
+scale = Vector2( 0.612407, 0.612407 )
+
+[node name="Bush-7" parent="." instance=ExtResource( 6 )]
+position = Vector2( -306.951, 719.859 )
+rotation = 0.933195
+scale = Vector2( 0.612407, 0.612407 )
+
+[node name="Tree-1" parent="." instance=ExtResource( 7 )]
+position = Vector2( 211.394, 581.177 )
+rotation = -0.017078
+
+[node name="Tree-2" parent="." instance=ExtResource( 7 )]
+position = Vector2( -585.714, 563.439 )
+rotation = -0.017078
+
+[node name="Tree-3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 709.656, -205.025 )
+rotation = -0.017078
+
+[node name="LongWall_X" parent="." instance=ExtResource( 9 )]
+position = Vector2( -380.393, 859.29 )
+
+[node name="LongWall_X2" parent="." instance=ExtResource( 9 )]
+position = Vector2( -266.229, 859.29 )
+
+[node name="LongWall_X3" parent="." instance=ExtResource( 9 )]
+position = Vector2( 574.937, 859.29 )
+
+[node name="LongWall_X4" parent="." instance=ExtResource( 9 )]
+position = Vector2( 689.101, 859.29 )
+
+[node name="LongWall_X5" parent="." instance=ExtResource( 9 )]
+position = Vector2( 53.2712, 89.4763 )
+
+[node name="LongWall_X6" parent="." instance=ExtResource( 9 )]
+position = Vector2( 167.435, 89.4763 )
+
+[node name="LongWall_X7" parent="." instance=ExtResource( 9 )]
+position = Vector2( 489.314, -122.203 )
+
+[node name="LongWall_X8" parent="." instance=ExtResource( 9 )]
+position = Vector2( 603.478, -122.203 )
+
+[node name="LongWall_X9" parent="." instance=ExtResource( 9 )]
+position = Vector2( -12.305, 651.391 )
+
+[node name="LongWall_X11" parent="." instance=ExtResource( 9 )]
+position = Vector2( 48.0163, -123.261 )
+
+[node name="LongWall_X10" parent="." instance=ExtResource( 9 )]
+position = Vector2( 101.859, 651.391 )
+
+[node name="LogWall_Y" parent="." instance=ExtResource( 8 )]
+position = Vector2( -741.703, 1061.38 )
+
+[node name="LogWall_Y2" parent="." instance=ExtResource( 8 )]
+position = Vector2( -741.703, 1149.22 )
+
+[node name="LogWall_Y3" parent="." instance=ExtResource( 8 )]
+position = Vector2( 539.859, 183.021 )
+
+[node name="LogWall_Y4" parent="." instance=ExtResource( 8 )]
+position = Vector2( 539.859, 270.858 )
+
+[node name="LogWall_Y5" parent="." instance=ExtResource( 8 )]
+position = Vector2( 744.105, 183.021 )
+
+[node name="LogWall_Y6" parent="." instance=ExtResource( 8 )]
+position = Vector2( 744.105, 270.858 )
+
+[node name="LogWall_Y7" parent="." instance=ExtResource( 8 )]
+position = Vector2( 744.105, -36.0399 )
+
+[node name="LogWall_Y8" parent="." instance=ExtResource( 8 )]
+position = Vector2( 744.105, 51.7963 )
+
+[node name="Node2D3" parent="." instance=ExtResource( 10 )]
+position = Vector2( -354.374, 425.365 )
+rotation = 1.57079
+
+[node name="Node2D4" parent="." instance=ExtResource( 10 )]
+position = Vector2( 243.547, -330.238 )
+rotation = 1.57079
+
+[node name="Node2D5" parent="." instance=ExtResource( 10 )]
+position = Vector2( 1033.01, 136.458 )
+rotation = 3.14159
+
+[node name="Node2D6" parent="." instance=ExtResource( 10 )]
+position = Vector2( 1033.01, 711.125 )
+rotation = 3.14159
+
+[node name="Node2D7" parent="." instance=ExtResource( 10 )]
+position = Vector2( -329.653, 1148.46 )
+rotation = 3.14159
 [connection signal="body_entered" from="Cannons/EnableCannons" to="Cannons/EnableCannons" method="_on_EnableCannons_body_entered"]
 [connection signal="body_entered" from="Cannons/DisableCannons" to="Cannons/DisableCannons" method="_on_DisableCannons_body_entered"]
