@@ -1,9 +1,24 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Rick/Assets/Boss/SpriteSheet/Boss_Sprite_Sheet.png" type="Texture" id=1]
 
 [sub_resource type="Animation" id=1]
-resource_name = "BossIdleMove-Anim"
+resource_name = "BossDeath-Anim"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 9, 10, 11, 12, 13 ]
+}
+
+[sub_resource type="Animation" id=2]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -23,8 +38,10 @@ tracks/0/keys = {
 
 [node name="Boss_Sprite_Sheet" type="Sprite" parent="."]
 texture = ExtResource( 1 )
-vframes = 3
+vframes = 5
 hframes = 3
+frame = 12
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Boss_Sprite_Sheet"]
-anims/BossIdleMove-Anim = SubResource( 1 )
+anims/BossDeath-Anim = SubResource( 1 )
+anims/BossIdleMove-Anim = SubResource( 2 )
