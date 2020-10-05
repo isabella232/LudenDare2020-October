@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/BG-Music-part1.wav-0ef7ebc0c28dec0c355bd54debdef017.sample"
+
+[deps]
+
+source_file="res://Rick/Assets/Audio/Music/BG-Music-part1.wav"
+dest_files=[ "res://.import/BG-Music-part1.wav-0ef7ebc0c28dec0c355bd54debdef017.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

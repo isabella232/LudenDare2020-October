@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Rick/Assets/Player/Player_Sprite_Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Rick/Assets/Audio/Player-dash-SoundFX.wav" type="AudioStream" id=2]
 [ext_resource path="res://Rick/Assets/Audio/Player-Attack_SoundFX.wav" type="AudioStream" id=3]
 [ext_resource path="res://Rick/Assets/Audio/Player-Death-SoundFX.wav" type="AudioStream" id=4]
+[ext_resource path="res://Rick/Assets/Audio/Music/BG-Music-loopable.wav" type="AudioStream" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Player-AttackAnim"
@@ -143,3 +144,9 @@ anims/Player-RunAnim = SubResource( 5 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AnimationPlayer"]
 stream = ExtResource( 4 )
 volume_db = -5.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -7.0
+autoplay = true
+mix_target = 2
