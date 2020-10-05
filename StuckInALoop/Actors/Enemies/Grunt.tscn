@@ -129,6 +129,7 @@ func process_statemachine(delta):
 		
 		grunt_states.death:
 			velocity = Vector2.ZERO
+			modulate = Color.white
 			if (!animator.is_playing()):
 				queue_free()
 
