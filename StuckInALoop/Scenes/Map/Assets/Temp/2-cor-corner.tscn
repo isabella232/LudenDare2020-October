@@ -1,6 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Rick/Assets/Temp/New/2-Cor-corner.png" type="Texture" id=1]
+[ext_resource path="res://cam/Assets/Tiles/Ground/ground_grass1.png" type="Texture" id=2]
+[ext_resource path="res://cam/Assets/Tiles/Ground/ground_corner1.png" type="Texture" id=3]
+[ext_resource path="res://cam/Assets/Tiles/Ground/ground_topside1.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10.8028, 120.195 )
@@ -26,3 +29,22 @@ shape = SubResource( 2 )
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
 position = Vector2( 121.838, 120.779 )
 shape = SubResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -128, -128 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 0, -128 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="Sprite3" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Sprite4" type="Sprite" parent="."]
+position = Vector2( -128, 0 )
+texture = ExtResource( 2 )
+centered = false
