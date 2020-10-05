@@ -23,7 +23,6 @@ func _process(delta):
 	if (time_since_shot > delay):
 		var current_scene = get_tree().current_scene
 		var effect = explosive.instance()
-		print(effect)
 		current_scene.add_child(effect)
 		effect.global_position = target.global_position
 		var forward = (target.global_position - global_position).normalized()
