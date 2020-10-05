@@ -176,7 +176,15 @@ position = Vector2( -176, -1320 )
 scale = Vector2( 0.8, 0.8 )
 
 [node name="Tree-3" parent="." instance=ExtResource( 5 )]
-position = Vector2( -600, -1256 )
+position = Vector2( -598, -1256 )
+scale = Vector2( 0.8, 0.8 )
+
+[node name="Tree-5" parent="." instance=ExtResource( 5 )]
+position = Vector2( 612, -1332 )
+scale = Vector2( 0.8, 0.8 )
+
+[node name="Tree-4" parent="." instance=ExtResource( 5 )]
+position = Vector2( -600, -192 )
 scale = Vector2( 0.8, 0.8 )
 
 [node name="LongWall_X" parent="." instance=ExtResource( 6 )]
@@ -186,7 +194,10 @@ position = Vector2( -512, -1272 )
 position = Vector2( -400, -1272 )
 
 [node name="LongWall_X3" parent="." instance=ExtResource( 6 )]
-position = Vector2( -288, -1272 )
+position = Vector2( -287, -1272 )
+
+[node name="LongWall_X4" parent="." instance=ExtResource( 6 )]
+position = Vector2( 563, -37 )
 
 [node name="Bush-1" parent="." instance=ExtResource( 7 )]
 position = Vector2( -528, -1200 )
@@ -198,8 +209,23 @@ rotation = 0.760963
 scale = Vector2( 0.657, 0.575 )
 
 [node name="Bush-3" parent="." instance=ExtResource( 7 )]
-position = Vector2( -545, -992 )
+position = Vector2( -558, -1009 )
 rotation = -0.380482
+scale = Vector2( 0.6, 0.6 )
+
+[node name="Bush-6" parent="." instance=ExtResource( 7 )]
+position = Vector2( 586, -1173 )
+rotation = -0.380482
+scale = Vector2( 0.6, 0.6 )
+
+[node name="Bush-4" parent="." instance=ExtResource( 7 )]
+position = Vector2( 613, -119 )
+rotation = -6.21861
+scale = Vector2( 0.6, 0.6 )
+
+[node name="Bush-5" parent="." instance=ExtResource( 7 )]
+position = Vector2( -602, -44 )
+rotation = -6.21861
 scale = Vector2( 0.6, 0.6 )
 
 [node name="SpawnBoss" type="Node2D" parent="."]

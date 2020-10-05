@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Rick/Assets/Player/Player_Sprite_Sheet.png" type="Texture" id=1]
+[ext_resource path="res://Rick/Assets/Audio/Player-dash-SoundFX.wav" type="AudioStream" id=2]
+[ext_resource path="res://Rick/Assets/Audio/Player-Attack_SoundFX.wav" type="AudioStream" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Player-AttackAnim"
@@ -17,6 +19,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 17, 18, 19, 20, 21, 22, 23, 24, 25 ]
 }
+tracks/1/type = "audio"
+tracks/1/path = NodePath("AnimationPlayer/AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 3 )
+} ],
+"times": PoolRealArray( 0 )
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "Player-DashAnim"
@@ -32,6 +48,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 27, 28, 29, 30, 31, 32, 33, 34, 35, 36 ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("AnimationPlayer/AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+} ],
+"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="Animation" id=3]
@@ -94,3 +124,7 @@ anims/Player-DashAnim = SubResource( 2 )
 anims/Player-DeathAnim = SubResource( 3 )
 anims/Player-IdleAnim = SubResource( 4 )
 anims/Player-RunAnim = SubResource( 5 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AnimationPlayer"]
+stream = ExtResource( 3 )
+volume_db = -5.0
