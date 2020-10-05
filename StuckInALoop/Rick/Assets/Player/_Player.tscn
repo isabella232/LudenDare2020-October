@@ -85,11 +85,7 @@ tracks/0/keys = {
 texture = ExtResource( 1 )
 vframes = 11
 hframes = 8
-<<<<<<< HEAD
-frame = 17
-=======
 frame = 84
->>>>>>> 8153473cd15b68302450dfbae6f2a69fd3246d76
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 2.0
