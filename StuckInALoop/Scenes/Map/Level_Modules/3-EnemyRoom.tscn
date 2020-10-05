@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Map/Assets/Temp/6-Room-door.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Map/Assets/Temp/5-Room-Floor.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Pete/Enemy/Enemy_Spawner.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Rick/Assets/Obstacles/Trees/Tree-1.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Rick/Assets/Obstacles/Foilage/Bush-1.tscn" type="PackedScene" id=7]
+[ext_resource path="res://cam/Assets/Objects/Totem/Totem.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 74.916, 173.087 )
@@ -108,5 +109,9 @@ scale = Vector2( 0.4, 0.4 )
 [node name="Tree-1" parent="." instance=ExtResource( 6 )]
 position = Vector2( 48, -416 )
 scale = Vector2( 0.7, 0.7 )
+
+[node name="Totem" parent="." instance=ExtResource( 8 )]
+position = Vector2( 648.075, -37.7862 )
+scale = Vector2( 0.75, 0.75 )
 
 [editable path="Enemy_Spawner"]

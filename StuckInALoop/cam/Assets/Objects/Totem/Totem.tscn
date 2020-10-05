@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://cam/Assets/Objects/Totem/totem.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 52.5225, 160.668 )
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -21,11 +24,17 @@ tracks/0/keys = {
 
 [node name="Totem" type="Node2D"]
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
 scale = Vector2( 0.5, 0.5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( -8.89893, 9.78876 )
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.35, 0.35 )
 texture = ExtResource( 1 )
 hframes = 2
-frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 anims/Idle = SubResource( 1 )
