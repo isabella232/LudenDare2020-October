@@ -17,6 +17,7 @@ onready var target = $Target
 onready var sprite = $Sprite
 onready var animator : AnimationPlayer = $Sprite/AnimationPlayer
 var hit_effect = load(\"res://Rick/Assets/FX/Hit_FX.tscn\")
+var projectile = load(\"res://Pete/Player/PlayerWeapon.tscn\")
 
 var health = 10
 var recoil_velocity = Vector2.ZERO
@@ -95,8 +96,8 @@ func get_forward():
 
 func try_shoot():
 	if (Input.is_action_just_pressed(\"player_shoot\")):
-		var bullet = load(\"res://Pete/Bullet/Bullet.tscn\").instance()
-		bullet.global_position = global_position + get_forward()* 25
+		var bullet = projectile.instance()
+		bullet.global_position = global_position + get_forward()* 50
 		bullet.velocity = get_forward()
 		get_tree().current_scene.add_child(bullet)
 		change(PlayerStates.enter_attack)
@@ -207,6 +208,7 @@ script/source = "extends Node2D
 var heart = load(\"res://Pete/Player/Health_Point.tscn\")
 
 
+# warning-ignore:unused_argument
 func _process(delta):
 	if (!Game.playing ):
 		return
@@ -229,6 +231,7 @@ script/source = "extends Node2D
 
 var skull = load(\"res://Pete/Player/Loop_Count.tscn\")
 
+# warning-ignore:unused_argument
 func _process(delta):
 	if (!Game.playing ):
 		return
