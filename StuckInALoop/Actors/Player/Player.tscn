@@ -180,6 +180,7 @@ func process_statemachine(delta):
 		PlayerStates.death:
 			target_velocity = Vector2.ZERO
 			modulate = Color(.2, .2, .2)
+			Game.playing = false
 			var game_over = load(\"res://Scenes/Game Over/Game_Over.tscn\").instance()
 			get_tree().current_scene.add_child(game_over)
 
@@ -207,7 +208,7 @@ var heart = load(\"res://Pete/Player/Health_Point.tscn\")
 
 
 func _process(delta):
-	if (!Game.playing):
+	if (!Game.playing ):
 		return
 	var count = Game.player.health - get_child_count()
 	var child_count = get_child_count()
@@ -229,7 +230,7 @@ script/source = "extends Node2D
 var skull = load(\"res://Pete/Player/Loop_Count.tscn\")
 
 func _process(delta):
-	if (!Game.playing):
+	if (!Game.playing ):
 		return
 	var count = Game.loops - get_child_count()
 	var child_count = get_child_count()

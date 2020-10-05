@@ -11,14 +11,15 @@ enum grunt_states {
 	enter_run,
 	run,
 	damage,
-	death
+	death,
+	enter_attack,
+	attack
 	}
 
 enum grunt_ai {
 	idle,
 	chase,
 	flee,
-	attack,
 	wander
 }
 
@@ -69,17 +70,28 @@ func _integrate_forces(state):
 	state.linear_velocity = velocity
 	pass
 
+var do_attack = false
+
+func try_attack(delta):
+	if (do_attack):
+		attack_delay += delta;
+		if (attack_delay > attack_cooldown):
+			attack_delay = 0
+			attack_cooldown = randf()*2 + 1
+			change_state(grunt_states.enter_attack)
+
 # warning-ignore:unused_argument
 func process_statemachine(delta):
 	match(current_state):
 		grunt_states.enter_idle:
-			animator.play(\"Walk\")
+			animator.play(\"Idle\")
 			velocity = Vector2.ZERO
 			change_state(grunt_states.idle)
 		
 		grunt_states.idle:
 			if (move_input.length() > .1):
 				change_state(grunt_states.enter_run)
+			try_attack(delta)
 		
 		grunt_states.enter_run:
 			animator.play(\"Walk\")
@@ -89,6 +101,24 @@ func process_statemachine(delta):
 			if (move_input.length() > .1):
 				velocity = move_input * run_speed * ((Game.loops+1)*1.1)
 			else:
+				change_state(grunt_states.enter_idle)
+			try_attack(delta)
+		
+		grunt_states.enter_attack:
+			animator.play(\"Attack\")
+			do_attack = false
+			change_state(grunt_states.attack)
+			if (target != null):
+				var bullet = projectile.instance()
+				get_tree().current_scene.add_child(bullet)
+				var bvelocity = (target.global_position - global_position).normalized()
+				bullet.global_position = global_position + bvelocity * 50
+				bullet.velocity = bvelocity
+				bullet.damage = damage
+				bullet.speed = 500
+		
+		grunt_states.attack:
+			if (animator.is_playing() == false):
 				change_state(grunt_states.enter_idle)
 		
 		grunt_states.damage:
@@ -123,23 +153,8 @@ func process_ai(delta):
 				change_ai(grunt_ai.wander)
 			else:
 				move_input = (target.global_position - global_position).normalized()
-				attack_delay += delta
-				if (attack_delay > attack_cooldown):
-					change_ai(grunt_ai.attack)
-					attack_delay = 0
-					attack_cooldown = randf()*2 + 1
-		
-		grunt_ai.attack:
-			if (target != null):
-				var bullet = projectile.instance()
-				get_tree().current_scene.add_child(bullet)
-				var bvelocity = (target.global_position - global_position).normalized()
-				bullet.global_position = global_position + bvelocity * 50
-				bullet.velocity = bvelocity
-				bullet.damage = damage
-				bullet.speed = 500
-			change_ai(grunt_ai.idle)
-		
+				do_attack = true
+				
 		grunt_ai.wander:			
 			if (choose_wander_direction):
 				choose_wander_direction = false
