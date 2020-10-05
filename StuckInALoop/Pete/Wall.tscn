@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Rick/Assets/Obstacles/Walls/LongWall_X.tscn" type="PackedScene" id=1]
+
+[sub_resource type="Animation" id=4]
+resource_name = "Spawn"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Wall:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 0.378929, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, -2.38419e-06 ), Vector2( 1, 1.84 ), Vector2( 1, 0.679995 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="GDScript" id=5]
+script/source = "extends AnimationPlayer
+
+# Called when the node enters the scene tree for the first time.
+func _enter_tree():
+	play(\"Spawn\")
+
+"
+
+[node name="Wall" type="Node2D"]
+
+[node name="Wall" type="Node2D" parent="."]
+position = Vector2( 0, 36.5377 )
+scale = Vector2( 1, -2.38419e-06 )
+
+[node name="LongWall_X" type="StaticBody2D" parent="Wall" instance=ExtResource( 1 )]
+position = Vector2( -76.2252, -36.5377 )
+scale = Vector2( 1.46697, 1.46697 )
+
+[node name="LongWall_X2" type="StaticBody2D" parent="Wall" instance=ExtResource( 1 )]
+position = Vector2( 81.8948, -36.5377 )
+scale = Vector2( 1.46697, 1.46697 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Spawn = SubResource( 4 )
+script = SubResource( 5 )
