@@ -43,24 +43,27 @@ func _input(event):
 		if (event.get_relative().length() > 1):
 			controller = false
 
+func move_reticle():
+	if (state != PlayerStates.death):
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+		var x = Input.get_action_strength(\"player_look_right\") - Input.get_action_strength(\"player_look_left\")
+		var y = -Input.get_action_strength(\"player_look_up\") + Input.get_action_strength(\"player_look_down\")
+		if (Vector2(x,y).length() > .1):
+			controller = true
+			target.global_position = global_position + Vector2(x,y).normalized()*100
+		
+		if (!controller):
+			target.global_position = target.get_global_mouse_position()
+
 var controller = false
 func look_at_target():
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	var x = Input.get_action_strength(\"player_look_right\") - Input.get_action_strength(\"player_look_left\")
-	var y = -Input.get_action_strength(\"player_look_up\") + Input.get_action_strength(\"player_look_down\")
-	if (Vector2(x,y).length() > .1):
-		controller = true
-		target.global_position = global_position + Vector2(x,y).normalized()*100
-		
-	if (!controller):
-		target.global_position = target.get_global_mouse_position()
-		
 	if (target.global_position.x < global_position.x && sprite.scale.x > 0):
 		sprite.scale.x *= -1
 	if (target.global_position.x > global_position.x && sprite.scale.x < 0):
 		sprite.scale.x *=-1
 	
 func _process(delta):
+	move_reticle()
 	process_statemachine(delta)
 	pass
 	
@@ -73,7 +76,6 @@ func _integrate_forces(pstate):
 func change(new_state):
 	state = new_state
 	state_time = 0
-	#print(\"player state : \", new_state)
 
 func player_move_input():
 	var x = Input.get_action_strength(\"player_move_right\") - Input.get_action_strength(\"player_move_left\")
@@ -100,8 +102,8 @@ func try_shoot():
 var count = 0
 func process_statemachine(delta):
 	count += 1
-	print(state, \" \", count)
 	state_time += delta
+	
 	match (state):
 		PlayerStates.enter_idle:
 			animator.play(\"Player-IdleAnim\")
@@ -185,7 +187,6 @@ func _on_Player_on_damage(amount, recoil_direction):
 	else:
 		change(PlayerStates.damage)
 		recoil_velocity = recoil_direction
-	pass # Replace with function body.
 "
 
 [sub_resource type="CircleShape2D" id=2]
@@ -219,6 +220,7 @@ shape = SubResource( 2 )
 position = Vector2( 88.9209, -22.318 )
 
 [node name="cross_hair" type="Sprite" parent="Target"]
+modulate = Color( 1, 0.117647, 0, 1 )
 scale = Vector2( 0.263893, 0.263893 )
 texture = ExtResource( 1 )
 

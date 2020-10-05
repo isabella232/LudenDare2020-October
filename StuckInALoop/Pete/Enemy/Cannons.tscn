@@ -15,6 +15,7 @@ onready var target = $Target
 var delay = randf()*2
 var time_since_shot = 0
 var enabled = false
+export var debug = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -26,6 +27,8 @@ func _process(delta):
 		ball.velocity = (target.global_position - global_position)
 		time_since_shot = 0
 		delay = (randf()+ 2)/(Game.loops + 1)
+		if (debug):
+			print(time_since_shot);
 	pass
 "
 
