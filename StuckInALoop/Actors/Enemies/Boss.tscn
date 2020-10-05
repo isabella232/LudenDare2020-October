@@ -31,7 +31,7 @@ var timer = 0
 
 func _ready():
 	animator.play(\"BossIdleMove-Anim\")
-	health = 10 + 5*Game.loops
+	health = 20 + 5*Game.loops
 
 func _process(delta):
 	state_time += delta
@@ -135,6 +135,7 @@ radius = 133.249
 [node name="Boss" type="RigidBody2D"]
 contacts_reported = 1
 contact_monitor = true
+can_sleep = false
 script = SubResource( 1 )
 
 [node name="Boss" parent="." instance=ExtResource( 1 )]
