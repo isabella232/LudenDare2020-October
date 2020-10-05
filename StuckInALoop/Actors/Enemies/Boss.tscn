@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Rick/Assets/Boss/Boss.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Actors/Enemies/Cannon_spawners.gd" type="Script" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends RigidBody2D
@@ -150,9 +149,6 @@ script = ExtResource( 2 )
 
 [node name="Node2D" type="Node2D" parent="Cannon_spawners"]
 position = Vector2( 200, 0 )
-
-[node name="Sprite" type="Sprite" parent="Cannon_spawners/Node2D"]
-texture = ExtResource( 3 )
 
 [node name="Node2D2" type="Node2D" parent="Cannon_spawners"]
 position = Vector2( -200, 0 )
