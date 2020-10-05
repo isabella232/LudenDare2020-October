@@ -19,6 +19,20 @@ position = Vector2( -120.803, 120.136 )
 shape = SubResource( 1 )
 
 [node name="Grass tile" type="Sprite" parent="."]
-position = Vector2( -0.702209, -0.160233 )
-scale = Vector2( 2.0163, 2.0163 )
 texture = ExtResource( 2 )
+centered = false
+
+[node name="Grass tile2" type="Sprite" parent="."]
+position = Vector2( 0, -128 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Grass tile3" type="Sprite" parent="."]
+position = Vector2( -128, -128 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Grass tile4" type="Sprite" parent="."]
+position = Vector2( -128, 0 )
+texture = ExtResource( 2 )
+centered = false
