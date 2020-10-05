@@ -16,6 +16,7 @@ onready var camera = $PlayerCamera
 onready var target = $Target
 onready var sprite = $Sprite
 onready var animator : AnimationPlayer = $Sprite/AnimationPlayer
+var hit_effect = load(\"res://Rick/Assets/FX/Hit_FX.tscn\")
 
 var health = 10
 var recoil_velocity = Vector2.ZERO
@@ -30,6 +31,7 @@ enum PlayerStates{
 	attack,
 	enter_dash
 	dash,
+	enter_damage,
 	damage,
 	death
 }
@@ -160,7 +162,13 @@ func process_statemachine(delta):
 			
 			if (state_time > .25):
 				change(PlayerStates.enter_idle)
-			
+		
+		PlayerStates.enter_damage:
+			var effect = hit_effect.instance()
+			effect.scale = Vector2(.25, .25)
+			get_tree().current_scene.add_child(effect)
+			effect.global_position = global_position
+			change(PlayerStates.damage)
 		
 		PlayerStates.damage:
 			target_velocity = lerp(recoil_velocity, player_move_input() * run_speed, state_time * 2)
@@ -185,7 +193,7 @@ func _on_Player_on_damage(amount, recoil_direction):
 	if (health <= 0):
 		change(PlayerStates.death)
 	else:
-		change(PlayerStates.damage)
+		change(PlayerStates.enter_damage)
 		recoil_velocity = recoil_direction
 "
 

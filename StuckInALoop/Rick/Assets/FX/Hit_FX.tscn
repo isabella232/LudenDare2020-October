@@ -1,11 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Rick/Assets/FX/Sprite-Sheets/Hit_FX_Spritesheet.png" type="Texture" id=1]
 
 [sub_resource type="Animation" id=1]
 resource_name = "HitFXAnim"
 length = 0.7
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -19,11 +18,32 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 }
 
+[sub_resource type="GDScript" id=2]
+script/source = "extends AnimationPlayer
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	print(\"play effect\")
+	play(\"HitFXAnim\")
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+# warning-ignore:unused_argument
+func _process(delta):
+	if (!is_playing()):
+		queue_free()
+"
+
 [node name="Hit_FX_Spritesheet" type="Sprite"]
-position = Vector2( 17.6884, 6.04556 )
 texture = ExtResource( 1 )
 vframes = 3
 hframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/HitFXAnim = SubResource( 1 )
+script = SubResource( 2 )
