@@ -52,6 +52,8 @@ margin_left = -125.0
 margin_top = -25.0
 margin_right = 125.0
 margin_bottom = 25.0
+focus_neighbour_top = NodePath("../Quit")
+focus_neighbour_bottom = NodePath("../Quit")
 text = "Start Game"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -66,12 +68,8 @@ margin_left = -125.0
 margin_top = -25.0
 margin_right = 125.0
 margin_bottom = 25.0
-focus_neighbour_left = NodePath("../Start")
 focus_neighbour_top = NodePath("../Start")
 focus_neighbour_right = NodePath("../Start")
-focus_neighbour_bottom = NodePath("../Start")
-focus_next = NodePath("../Start")
-focus_previous = NodePath("../Start")
 text = "Exit Game"
 __meta__ = {
 "_edit_use_anchors_": false

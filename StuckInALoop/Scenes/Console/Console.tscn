@@ -59,6 +59,8 @@ func process_input():
 			Game.player.god_mode = !Game.player.god_mode
 		\"loop\":
 			Game.loops = get_int(1)
+		\"health\":
+			Game.player.health = get_int(1)
 		_:
 			print(text_edit.text)
 "
