@@ -11,6 +11,7 @@ script/source = "extends Label
 var elapsed  = 0
 
 func _process(delta):
+	Game.playing = false
 	text = \"Game Over \\n Your Score Is \" + str(Game.loops)
 	elapsed += delta
 	if (elapsed > 5 || Input.is_action_just_pressed(\"pause_game\")):
