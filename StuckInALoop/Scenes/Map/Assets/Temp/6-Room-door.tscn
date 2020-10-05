@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Rick/Assets/Temp/New/5-Room-door.png" type="Texture" id=1]
-[ext_resource path="res://cam/Assets/Tiles/Grass tile.png" type="Texture" id=2]
+[ext_resource path="res://cam/Assets/Tiles/Ground/ground_grass1.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
