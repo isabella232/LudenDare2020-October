@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Rick/Assets/Temp/New/3-Room-corner.png" type="Texture" id=1]
+[ext_resource path="res://cam/Assets/Tiles/Grass corner tile.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 17.4354, 144.047 )
@@ -20,3 +21,7 @@ shape = SubResource( 1 )
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2( 2.00226, -123.473 )
 shape = SubResource( 2 )
+
+[node name="Grass corner tile" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )

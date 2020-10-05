@@ -9,7 +9,7 @@ var enemy = load(\"res://Actors/Enemies/Grunt.tscn\")
 var spawnable = true
 var rand = RandomNumberGenerator.new()
 
-func _on_Spawn_Enemies_body_entered(body):
+func _on_Spawn_Enemies_body_entered(_body):
 	if (spawnable):
 		spawnable = false
 # warning-ignore:unused_variable

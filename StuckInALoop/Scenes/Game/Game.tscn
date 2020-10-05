@@ -13,11 +13,10 @@
 [node name="Game" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 3511.31, -974.252 )
+position = Vector2( 4.53461, -1070.17 )
 z_as_relative = false
 
 [node name="Level_Layout" type="Node2D" parent="."]
-scale = Vector2( 1.5, 1.55 )
 z_index = -100
 
 [node name="Map_Layout" parent="Level_Layout" instance=ExtResource( 5 )]

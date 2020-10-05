@@ -11,9 +11,6 @@
 [node name="LogWall_Y" parent="." instance=ExtResource( 4 )]
 position = Vector2( 375, -1486 )
 
-[node name="LogWall_Y2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 375, -1326 )
-
 [node name="LogWall_Y3" parent="." instance=ExtResource( 4 )]
 position = Vector2( 103, -1254 )
 
