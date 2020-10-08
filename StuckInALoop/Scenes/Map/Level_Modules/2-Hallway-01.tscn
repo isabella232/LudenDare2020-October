@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Map/Assets/Temp/2-cor-corner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Map/Assets/Temp/1-cor-straight.tscn" type="PackedScene" id=2]
@@ -6,9 +6,6 @@
 [ext_resource path="res://Rick/Assets/Obstacles/Walls/LogWall_Y.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Map/Assets/Temp/Cannon.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Rick/Assets/FX/Waves01.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Rick/Assets/Obstacles/Trees/Tree-1.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Pete/Flora/Clover.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Rick/Assets/Obstacles/Foilage/Bush-1.tscn" type="PackedScene" id=9]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Area2D
@@ -162,96 +159,7 @@ position = Vector2( 327.005, -679.408 )
 rotation = 3.14159
 
 [node name="Node2D" parent="." instance=ExtResource( 6 )]
-position = Vector2( -198.485, -80 )
+position = Vector2( -190, -80 )
 scale = Vector2( 0.5, 0.5 )
-
-[node name="Node2D2" parent="." instance=ExtResource( 6 )]
-position = Vector2( -198.485, -861.151 )
-scale = Vector2( 0.5, 0.5 )
-
-[node name="Node2D3" parent="." instance=ExtResource( 6 )]
-position = Vector2( -198.485, -490.734 )
-scale = Vector2( 0.5, 0.5 )
-
-[node name="Node2D4" parent="." instance=ExtResource( 6 )]
-position = Vector2( -198.485, -1205.53 )
-scale = Vector2( 0.5, 0.5 )
-
-[node name="Node2D5" parent="." instance=ExtResource( 6 )]
-position = Vector2( -198.485, -1439.87 )
-scale = Vector2( 0.5, 0.5 )
-
-[node name="Tree-1" parent="." instance=ExtResource( 7 )]
-position = Vector2( 18.7023, -1607.77 )
-scale = Vector2( 0.816952, 1.09173 )
-
-[node name="Tree-2" parent="." instance=ExtResource( 7 )]
-position = Vector2( 97.3691, -366.432 )
-scale = Vector2( 0.816952, 1.09173 )
-
-[node name="Bush-1" parent="." instance=ExtResource( 9 )]
-position = Vector2( -56.1676, -859.92 )
-rotation = -0.294642
-scale = Vector2( 0.751981, 0.751981 )
-
-[node name="Bush-2" parent="." instance=ExtResource( 9 )]
-position = Vector2( -105.501, -1407.92 )
-rotation = -0.894468
-scale = Vector2( 0.751981, 0.751981 )
-
-[node name="Bush-3" parent="." instance=ExtResource( 9 )]
-position = Vector2( 273.166, -1319.92 )
-rotation = -0.434504
-scale = Vector2( 0.751981, 0.751981 )
-
-[node name="Bush-4" parent="." instance=ExtResource( 9 )]
-position = Vector2( 198.499, -1314.59 )
-rotation = -1.43739
-scale = Vector2( 0.583553, 0.583553 )
-
-[node name="Bush-5" parent="." instance=ExtResource( 9 )]
-position = Vector2( 41.1658, -695.92 )
-scale = Vector2( 0.561232, 0.561232 )
-
-[node name="Bush-6" parent="." instance=ExtResource( 9 )]
-position = Vector2( 43.8325, -310.586 )
-rotation = -0.226546
-scale = Vector2( 0.592348, 0.592348 )
-
-[node name="Clover" parent="." instance=ExtResource( 8 )]
-position = Vector2( -52.1675, -1289.25 )
-rotation = 0.164905
-
-[node name="Clover2" parent="." instance=ExtResource( 8 )]
-position = Vector2( 291.833, -1431.92 )
-rotation = 0.619214
-
-[node name="Clover3" parent="." instance=ExtResource( 8 )]
-position = Vector2( -50.8341, -475.92 )
-rotation = 1.17192
-
-[node name="Clover4" parent="." instance=ExtResource( 8 )]
-position = Vector2( -74.8341, -538.586 )
-rotation = 0.277449
-
-[node name="Clover5" parent="." instance=ExtResource( 8 )]
-position = Vector2( 14.4993, -503.919 )
-rotation = -0.71215
-
-[node name="Clover6" parent="." instance=ExtResource( 8 )]
-position = Vector2( 23.8326, -415.919 )
-rotation = -0.161832
-
-[node name="Clover7" parent="." instance=ExtResource( 8 )]
-position = Vector2( -50.834, -399.919 )
-rotation = 0.277449
-
-[node name="Clover8" parent="." instance=ExtResource( 8 )]
-position = Vector2( -60.1672, -85.2528 )
-rotation = 0.841292
-
-[node name="Clover9" parent="." instance=ExtResource( 8 )]
-position = Vector2( 58.4994, -1045.25 )
-rotation = 0.277449
 [connection signal="body_entered" from="Cannons/EnableCannons" to="Cannons/EnableCannons" method="_on_EnableCannons_body_entered"]
 [connection signal="body_entered" from="Cannons/DisableCannons" to="Cannons/DisableCannons" method="_on_DisableCannons_body_entered"]

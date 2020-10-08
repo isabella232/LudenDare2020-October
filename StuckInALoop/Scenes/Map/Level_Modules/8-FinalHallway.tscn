@@ -1,14 +1,8 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Map/Assets/Temp/2-cor-corner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Map/Assets/Temp/1-cor-straight.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Pete/Wall.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Pete/Flora/Clover.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Rick/Assets/Obstacles/Walls/LongWall_X.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Rick/Assets/Obstacles/Walls/LogWall_Y.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Rick/Assets/Obstacles/Foilage/Bush-1.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Rick/Assets/Obstacles/Trees/Tree-1.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Rick/Assets/FX/Waves01.tscn" type="PackedScene" id=9]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -39,7 +33,7 @@ extents = Vector2( 138.025, 37.9256 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 137.425, 32.2305 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 64.2314, 168.118 )
 
 [node name="8-FinalHallway" type="Node2D"]
@@ -89,138 +83,6 @@ position = Vector2( -49.947, 3.935 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LastHallwayBehaviour/OpenDoor SpawnBoss"]
 position = Vector2( 42.0448, -3.36353 )
-shape = SubResource( 4 )
-
-[node name="Clover" parent="." instance=ExtResource( 4 )]
-position = Vector2( -952.589, 56.4628 )
-rotation = 1.74137
-scale = Vector2( 0.854923, 0.854923 )
-
-[node name="Clover2" parent="." instance=ExtResource( 4 )]
-position = Vector2( -836.72, -341.088 )
-rotation = 0.316456
-scale = Vector2( 0.854923, 0.854923 )
-
-[node name="Clover3" parent="." instance=ExtResource( 4 )]
-position = Vector2( -328.295, 69.4482 )
-rotation = 1.97003
-scale = Vector2( 0.854923, 0.854923 )
-
-[node name="Clover4" parent="." instance=ExtResource( 4 )]
-position = Vector2( -534.062, 23.5001 )
-rotation = 1.44856
-scale = Vector2( 0.854923, 0.854923 )
-
-[node name="Clover5" parent="." instance=ExtResource( 4 )]
-position = Vector2( -981.557, -419.999 )
-rotation = 1.44856
-scale = Vector2( 0.741055, 0.755541 )
-
-[node name="LogWall_Y" parent="." instance=ExtResource( 6 )]
-position = Vector2( -997.902, 37.1671 )
-
-[node name="LogWall_Y2" parent="." instance=ExtResource( 6 )]
-position = Vector2( -794.768, -318.51 )
-
-[node name="LogWall_Y3" parent="." instance=ExtResource( 6 )]
-position = Vector2( -794.768, -233.21 )
-
-[node name="LogWall_Y4" parent="." instance=ExtResource( 6 )]
-position = Vector2( -794.768, -146.308 )
-
-[node name="LogWall_Y7" parent="." instance=ExtResource( 6 )]
-position = Vector2( -997.195, -424.813 )
-
-[node name="LogWall_Y11" parent="." instance=ExtResource( 6 )]
-position = Vector2( -797.012, -423.623 )
-
-[node name="LogWall_Y8" parent="." instance=ExtResource( 6 )]
-position = Vector2( -998.035, -324.833 )
-
-[node name="LogWall_Y9" parent="." instance=ExtResource( 6 )]
-position = Vector2( -998.035, -239.929 )
-
-[node name="LogWall_Y10" parent="." instance=ExtResource( 6 )]
-position = Vector2( -998.035, -153.028 )
-
-[node name="LongWall_X" parent="." instance=ExtResource( 5 )]
-position = Vector2( -967.05, 85.4301 )
-
-[node name="LongWall_X16" parent="." instance=ExtResource( 5 )]
-position = Vector2( -857.017, 85.4301 )
-
-[node name="LongWall_X2" parent="." instance=ExtResource( 5 )]
-position = Vector2( -747.821, -119.339 )
-
-[node name="LongWall_X3" parent="." instance=ExtResource( 5 )]
-position = Vector2( -635.947, -119.339 )
-
-[node name="LongWall_X4" parent="." instance=ExtResource( 5 )]
-position = Vector2( -522.715, -119.339 )
-
-[node name="LongWall_X5" parent="." instance=ExtResource( 5 )]
-position = Vector2( -410.841, -119.339 )
-
-[node name="LongWall_X15" parent="." instance=ExtResource( 5 )]
-position = Vector2( -70.6625, -119.339 )
-
-[node name="LongWall_X6" parent="." instance=ExtResource( 5 )]
-position = Vector2( -293.409, -119.339 )
-
-[node name="LongWall_X7" parent="." instance=ExtResource( 5 )]
-position = Vector2( -181.536, -119.339 )
-
-[node name="LongWall_X8" parent="." instance=ExtResource( 5 )]
-position = Vector2( -746.141, 84.7687 )
-
-[node name="LongWall_X9" parent="." instance=ExtResource( 5 )]
-position = Vector2( -634.267, 84.7687 )
-
-[node name="LongWall_X10" parent="." instance=ExtResource( 5 )]
-position = Vector2( -521.035, 84.7687 )
-
-[node name="LongWall_X11" parent="." instance=ExtResource( 5 )]
-position = Vector2( -409.161, 84.7687 )
-
-[node name="LongWall_X12" parent="." instance=ExtResource( 5 )]
-position = Vector2( -291.729, 84.7687 )
-
-[node name="LongWall_X13" parent="." instance=ExtResource( 5 )]
-position = Vector2( -179.856, 84.7687 )
-
-[node name="LongWall_X14" parent="." instance=ExtResource( 5 )]
-position = Vector2( -63.9431, 84.7687 )
-
-[node name="Tree-1" parent="." instance=ExtResource( 8 )]
-position = Vector2( -968.835, -141.882 )
-
-[node name="Bush-1" parent="." instance=ExtResource( 7 )]
-position = Vector2( -249, -10.0104 )
-rotation = 0.315615
-scale = Vector2( 0.575835, 0.621161 )
-
-[node name="Bush-2" parent="." instance=ExtResource( 7 )]
-position = Vector2( -940.277, -7.49062 )
-rotation = -1.98722
-scale = Vector2( 0.575835, 0.621161 )
-
-[node name="Bush-3" parent="." instance=ExtResource( 7 )]
-position = Vector2( -851.952, -458.354 )
-rotation = 0.799007
-scale = Vector2( 0.475811, 0.430732 )
-
-[node name="Node2D" parent="." instance=ExtResource( 9 )]
-position = Vector2( -186, 302.751 )
-rotation = -1.57079
-
-[node name="Node2D2" parent="." instance=ExtResource( 9 )]
-position = Vector2( -785.788, 302.751 )
-rotation = -1.57079
-
-[node name="Node2D3" parent="." instance=ExtResource( 9 )]
-position = Vector2( -1193.36, -444.759 )
-
-[node name="Node2D4" parent="." instance=ExtResource( 9 )]
-position = Vector2( -1193.36, -38.9678 )
+shape = SubResource( 6 )
 [connection signal="body_entered" from="LastHallwayBehaviour/ShutDoor" to="LastHallwayBehaviour" method="_on_ShutDoor_body_entered"]
 [connection signal="body_entered" from="LastHallwayBehaviour/OpenDoor SpawnBoss" to="LastHallwayBehaviour" method="_on_OpenDoor_SpawnBoss_body_entered"]
