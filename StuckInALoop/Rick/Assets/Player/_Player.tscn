@@ -132,15 +132,7 @@ tracks/0/keys = {
 texture = ExtResource( 1 )
 vframes = 11
 hframes = 8
-<<<<<<< HEAD
-<<<<<<< HEAD
-frame = 38
-=======
-frame = 17
->>>>>>> 516fca247491b06752996acebbb0e81a87453108
-=======
 frame = 84
->>>>>>> parent of d26c867... Level update
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 2.0
