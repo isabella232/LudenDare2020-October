@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scenes/Map/Assets/Temp/6-Room-door.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Map/Assets/Temp/5-Room-Floor.tscn" type="PackedScene" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://Pete/Wall.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Pete/Flora/Clover.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Pete/Flora/Rock.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Rick/Assets/Obstacles/Walls/LogWall_Y.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Rick/Assets/FX/Waves01.tscn" type="PackedScene" id=12]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -202,6 +204,15 @@ position = Vector2( -287, -1272 )
 [node name="LongWall_X4" parent="." instance=ExtResource( 6 )]
 position = Vector2( 563, -37 )
 
+[node name="LongWall_X5" parent="." instance=ExtResource( 6 )]
+position = Vector2( 240.428, -1272 )
+
+[node name="LongWall_X6" parent="." instance=ExtResource( 6 )]
+position = Vector2( 352.428, -1272 )
+
+[node name="LongWall_X7" parent="." instance=ExtResource( 6 )]
+position = Vector2( 465.428, -1272 )
+
 [node name="Bush-1" parent="." instance=ExtResource( 7 )]
 position = Vector2( -528, -1200 )
 scale = Vector2( 0.6, 0.6 )
@@ -218,6 +229,11 @@ scale = Vector2( 0.6, 0.6 )
 
 [node name="Bush-6" parent="." instance=ExtResource( 7 )]
 position = Vector2( 586, -1173 )
+rotation = -0.380482
+scale = Vector2( 0.6, 0.6 )
+
+[node name="Bush-7" parent="." instance=ExtResource( 7 )]
+position = Vector2( -506.715, -69.9135 )
 rotation = -0.380482
 scale = Vector2( 0.6, 0.6 )
 
@@ -265,6 +281,10 @@ scale = Vector2( 1.66667, 1.66667 )
 position = Vector2( 1807.98, -2152.67 )
 rotation = 4.56167e-09
 
+[node name="Rock2" parent="Doodads" instance=ExtResource( 10 )]
+position = Vector2( 1867.66, -1838.45 )
+rotation = 4.56167e-09
+
 [node name="Clover2" parent="Doodads" instance=ExtResource( 9 )]
 position = Vector2( 1295.56, -187.865 )
 rotation = -0.0645755
@@ -284,4 +304,170 @@ scale = Vector2( 1.66667, 1.66667 )
 position = Vector2( 1565.26, -157.76 )
 rotation = -0.0645755
 scale = Vector2( 1.66667, 1.66667 )
+
+[node name="Clover6" parent="Doodads" instance=ExtResource( 9 )]
+position = Vector2( 174.188, -1053.19 )
+rotation = 1.60678
+scale = Vector2( 1.66667, 1.66667 )
+
+[node name="Clover7" parent="Doodads" instance=ExtResource( 9 )]
+position = Vector2( 72.1077, -1068.88 )
+rotation = 5.24868
+scale = Vector2( 1.66667, 1.66667 )
+
+[node name="Clover8" parent="Doodads" instance=ExtResource( 9 )]
+position = Vector2( 1420.55, -1726.97 )
+rotation = 5.24868
+scale = Vector2( 1.66667, 1.66667 )
+
+[node name="Clover9" parent="Doodads" instance=ExtResource( 9 )]
+position = Vector2( 640.853, -1457.39 )
+rotation = 5.71411
+scale = Vector2( 1.66667, 1.66667 )
+
+[node name="Clover10" parent="Doodads" instance=ExtResource( 9 )]
+position = Vector2( 353.923, -1658 )
+rotation = 1.76267
+scale = Vector2( 2.02401, 2.15001 )
+
+[node name="Clover11" parent="Doodads" instance=ExtResource( 9 )]
+position = Vector2( 502.508, -1683.51 )
+rotation = 5.24868
+scale = Vector2( 1.53754, 1.53321 )
+
+[node name="LongWall_X5" parent="Doodads" instance=ExtResource( 6 )]
+position = Vector2( 109.502, -2.46302 )
+rotation = -0.0645755
+scale = Vector2( 1.66667, 1.66667 )
+
+[node name="LongWall_X6" parent="Doodads" instance=ExtResource( 6 )]
+position = Vector2( 295.78, -14.5087 )
+rotation = -0.0645755
+scale = Vector2( 1.66667, 1.66667 )
+
+[node name="LongWall_X7" parent="Doodads" instance=ExtResource( 6 )]
+position = Vector2( 483.721, -26.662 )
+rotation = -0.0645755
+scale = Vector2( 1.66667, 1.66667 )
+
+[node name="LongWall_X8" parent="Doodads" instance=ExtResource( 6 )]
+position = Vector2( 1565.38, -87.771 )
+rotation = -0.0645755
+scale = Vector2( 1.66667, 1.66667 )
+
+[node name="LongWall_X9" parent="Doodads" instance=ExtResource( 6 )]
+position = Vector2( 1753.32, -99.9242 )
+rotation = -0.0645755
+scale = Vector2( 1.66667, 1.66667 )
+
+[node name="LogWall_Y" parent="Doodads" instance=ExtResource( 11 )]
+position = Vector2( -127.57, -1683.43 )
+rotation = -0.0645755
+scale = Vector2( 1.66667, 1.66667 )
+
+[node name="LogWall_Y2" parent="Doodads" instance=ExtResource( 11 )]
+position = Vector2( -119.034, -1551.42 )
+rotation = -0.0645755
+scale = Vector2( 1.66667, 1.66667 )
+
+[node name="LogWall_Y3" parent="Doodads" instance=ExtResource( 11 )]
+position = Vector2( -110.042, -1412.37 )
+rotation = -0.0645755
+scale = Vector2( 1.66667, 1.66667 )
+
+[node name="LogWall_Y4" parent="Doodads" instance=ExtResource( 11 )]
+position = Vector2( -101.278, -1276.84 )
+rotation = -0.0645755
+scale = Vector2( 1.66667, 1.66667 )
+
+[node name="LogWall_Y5" parent="Doodads" instance=ExtResource( 11 )]
+position = Vector2( -92.9384, -1147.88 )
+rotation = -0.0645755
+scale = Vector2( 1.66667, 1.66667 )
+
+[node name="LogWall_Y6" parent="Doodads" instance=ExtResource( 11 )]
+position = Vector2( -84.4022, -1015.87 )
+rotation = -0.0645755
+scale = Vector2( 1.66667, 1.66667 )
+
+[node name="LogWall_Y7" parent="Doodads" instance=ExtResource( 11 )]
+position = Vector2( -75.4106, -876.824 )
+rotation = -0.0645755
+scale = Vector2( 1.66667, 1.66667 )
+
+[node name="LogWall_Y8" parent="Doodads" instance=ExtResource( 11 )]
+position = Vector2( -66.6467, -741.296 )
+rotation = -0.0645755
+scale = Vector2( 1.66667, 1.66667 )
+
+[node name="LogWall_Y9" parent="Doodads" instance=ExtResource( 11 )]
+position = Vector2( -58.0659, -608.601 )
+rotation = -0.0645755
+scale = Vector2( 1.66667, 1.66667 )
+
+[node name="LogWall_Y10" parent="Doodads" instance=ExtResource( 11 )]
+position = Vector2( -49.3019, -473.073 )
+rotation = -0.0645755
+scale = Vector2( 1.66667, 1.66667 )
+
+[node name="LogWall_Y12" parent="Doodads" instance=ExtResource( 11 )]
+position = Vector2( 1905.7, -1754.82 )
+rotation = -0.0645755
+scale = Vector2( 1.66667, 1.66667 )
+
+[node name="LogWall_Y13" parent="Doodads" instance=ExtResource( 11 )]
+position = Vector2( 1914.69, -1615.77 )
+rotation = -0.0645755
+scale = Vector2( 1.66667, 1.66667 )
+
+[node name="LogWall_Y14" parent="Doodads" instance=ExtResource( 11 )]
+position = Vector2( 1923.45, -1480.24 )
+rotation = -0.0645755
+scale = Vector2( 1.66667, 1.66667 )
+
+[node name="LogWall_Y15" parent="Doodads" instance=ExtResource( 11 )]
+position = Vector2( 1931.79, -1351.28 )
+rotation = -0.0645755
+scale = Vector2( 1.66667, 1.66667 )
+
+[node name="LogWall_Y16" parent="Doodads" instance=ExtResource( 11 )]
+position = Vector2( 1940.33, -1219.27 )
+rotation = -0.0645755
+scale = Vector2( 1.66667, 1.66667 )
+
+[node name="LogWall_Y17" parent="Doodads" instance=ExtResource( 11 )]
+position = Vector2( 1949.32, -1080.22 )
+rotation = -0.0645755
+scale = Vector2( 1.66667, 1.66667 )
+
+[node name="LogWall_Y18" parent="Doodads" instance=ExtResource( 11 )]
+position = Vector2( 1958.08, -944.693 )
+rotation = -0.0645755
+scale = Vector2( 1.66667, 1.66667 )
+
+[node name="LogWall_Y19" parent="Doodads" instance=ExtResource( 11 )]
+position = Vector2( 1966.67, -811.998 )
+rotation = -0.0645755
+scale = Vector2( 1.66667, 1.66667 )
+
+[node name="LogWall_Y20" parent="Doodads" instance=ExtResource( 11 )]
+position = Vector2( 1975.43, -676.47 )
+rotation = -0.0645755
+scale = Vector2( 1.66667, 1.66667 )
+
+[node name="LogWall_Y21" parent="Doodads" instance=ExtResource( 11 )]
+position = Vector2( 1984.19, -540.942 )
+rotation = -0.0645755
+scale = Vector2( 1.66667, 1.66667 )
+
+[node name="LogWall_Y22" parent="Doodads" instance=ExtResource( 11 )]
+position = Vector2( 1992.96, -405.414 )
+rotation = -0.0645755
+scale = Vector2( 1.66667, 1.66667 )
+
+[node name="Node2D" parent="." instance=ExtResource( 12 )]
+position = Vector2( -896.95, -303.282 )
+
+[node name="Node2D2" parent="." instance=ExtResource( 12 )]
+position = Vector2( -896.95, -999.232 )
 [connection signal="body_entered" from="SpawnBoss/SpawnBoss" to="SpawnBoss" method="_on_SpawnBoss_body_entered"]
